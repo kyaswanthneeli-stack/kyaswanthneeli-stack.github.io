@@ -11,6 +11,13 @@ PAGES = [
     ROOT / "projects" / "codeatlas-mcp.html",
     ROOT / "projects" / "agentgate.html",
     ROOT / "projects" / "routewise.html",
+    ROOT / "projects" / "codeatlas-guide.html",
+    ROOT / "projects" / "agentgate-guide.html",
+    ROOT / "projects" / "routewise-guide.html",
+    ROOT / "projects" / "lab-guide.html",
+    ROOT / "enterprise-knowledge-assistant.html",
+    ROOT / "agentic-search.html",
+    ROOT / "voice-assistant.html",
 ]
 
 class Tags(HTMLParser):
@@ -34,6 +41,7 @@ class Tags(HTMLParser):
 
 def run():
     failures = []
+    cache = {}
     for page in PAGES:
         if not page.is_file():
             failures.append(f"Missing page: {page}")
@@ -41,6 +49,7 @@ def run():
         html = page.read_text(encoding="utf-8")
         parser = Tags()
         parser.feed(html)
+        cache[page.resolve()] = parser
         if not parser.lang:
             failures.append(f"{page}: missing html lang=en")
         if parser.titles != 1:
@@ -56,13 +65,22 @@ def run():
                 candidate = (ROOT / unquote(parsed.path).lstrip("/")) if parsed.path.startswith("/") else (page.parent / unquote(parsed.path))
                 if not candidate.exists():
                     failures.append(f"{page.relative_to(ROOT)}: missing {tag} target {url}")
+                elif parsed.fragment and candidate.suffix.lower() in {".html", ".htm"}:
+                    target = candidate.resolve()
+                    nested = cache.get(target)
+                    if nested is None:
+                        nested = Tags()
+                        nested.feed(target.read_text(encoding="utf-8"))
+                        cache[target] = nested
+                    if unquote(parsed.fragment) not in nested.ids:
+                        failures.append(f"{page.relative_to(ROOT)}: missing target anchor {url}")
             elif parsed.fragment and parsed.fragment not in parser.ids:
                 failures.append(f"{page.relative_to(ROOT)}: missing anchor #{parsed.fragment}")
         print(f"Checked {page.relative_to(ROOT)}: {len(parser.links)} links/assets")
     if failures:
         print("\n".join(failures), file=sys.stderr)
         raise SystemExit(1)
-    print("All four portfolio pages passed local link and structure checks.")
+    print("All checked portfolio pages passed local link, anchor, and structure checks.")
 
 if __name__ == "__main__":
     run()
