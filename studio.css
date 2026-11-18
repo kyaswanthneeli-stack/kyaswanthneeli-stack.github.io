@@ -403,3 +403,25 @@ a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible {
   .ticker-track{animation:none}
   .hero-art{transform:none!important}
 }
+
+/* ARCHITECTURE-FIRST PROJECT NAVIGATION / SIGNAL SPACE */
+.journey-guide{display:grid;grid-template-columns:minmax(0,1fr) 22px minmax(0,1.1fr) 22px minmax(0,1fr);align-items:center;gap:15px;padding:22px 27px;border:1px solid #d6f1bf27;border-radius:17px;background:linear-gradient(110deg,#161c26,#161b23);margin-bottom:27px}
+.journey-guide>div{display:flex;flex-direction:column;gap:2px}
+.journey-num{color:var(--acid);font:500 10px 'DM Mono',monospace;letter-spacing:.12em;margin-bottom:2px}
+.journey-guide strong{font:600 14px 'Space Grotesk',sans-serif;color:#f4f5f5;letter-spacing:-.025em}
+.journey-guide small{font:400 11px 'DM Sans',sans-serif;color:#a3abb7}
+.journey-link{font-size:19px;color:var(--acid);text-align:center}
+.project-plain{color:#d3d9e1;font-size:13px;line-height:1.7;background:color-mix(in srgb,var(--project-accent) 8%,transparent);border-left:2px solid var(--project-accent);padding:11px 14px;margin:0 0 15px;border-radius:0 9px 9px 0}
+.project-plain b{color:var(--project-accent)}
+.project-route{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin-bottom:19px}
+.project-route span{font:500 10px/1.5 'DM Mono',monospace;color:#dbe5ea;padding:6px 9px;border-radius:8px;background:#ffffff09;border:1px solid #ffffff20}
+.project-route i{font-style:normal;font-size:13px;color:var(--project-accent)}
+.architecture-launch{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:-5px 0 17px;padding:12px 15px;border:1px solid color-mix(in srgb,var(--project-accent) 56%,transparent);border-radius:11px;color:var(--project-accent);font:600 12px 'DM Mono',monospace;background:color-mix(in srgb,var(--project-accent) 8%,transparent);transition:background .2s,transform .2s}
+.architecture-launch:hover{background:color-mix(in srgb,var(--project-accent) 17%,transparent);transform:translateY(-2px)}
+.architecture-launch b{font-size:18px;font-weight:500}
+.lab-actions{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-top:auto}
+.lab-open{margin-top:0}
+.lab-demo{color:#c3cad5;font:500 11px 'DM Mono',monospace;transition:color .2s}
+.lab-demo:hover{color:var(--acid)}
+@media(max-width:900px){.journey-guide{gap:9px;padding:18px}.journey-guide strong{font-size:12px}.journey-guide small{font-size:10px}}
+@media(max-width:680px){.journey-guide{grid-template-columns:1fr;gap:5px;padding:20px}.journey-guide>div{gap:2px}.journey-guide .journey-link{font-size:16px;line-height:1;text-align:left;padding-left:1px;transform:rotate(90deg);width:24px}.project-route{gap:5px}.project-route span{font-size:9px}.architecture-launch{font-size:11px;margin-bottom:20px}.lab-actions{gap:16px}}
