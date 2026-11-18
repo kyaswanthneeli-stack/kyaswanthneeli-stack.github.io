@@ -5,6 +5,32 @@
 (() => {
   "use strict";
 
+  // Clean shared portfolio URLs without altering the page, hash, or meaningful
+  // non-tracking query parameters. The website did not create the UTM tags:
+  // some sharing platforms append them to outbound links.
+  try {
+    const current = new URL(window.location.href);
+    let changed = false;
+    for (const key of [...current.searchParams.keys()]) {
+      const normalized = key.toLowerCase();
+      if (normalized.startsWith("utm_") || normalized === "v" ||
+          normalized === "fbclid" || normalized === "gclid" ||
+          normalized === "mc_cid" || normalized === "mc_eid") {
+        current.searchParams.delete(key);
+        changed = true;
+      }
+    }
+    if (changed && window.history && window.history.replaceState) {
+      window.history.replaceState(
+        window.history.state,
+        "",
+        current.pathname + current.search + current.hash
+      );
+    }
+  } catch (_) {
+    // Privacy cleanup is an enhancement: don't block the portfolio.
+  }
+
   const doc = document.documentElement;
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
   const precisePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
