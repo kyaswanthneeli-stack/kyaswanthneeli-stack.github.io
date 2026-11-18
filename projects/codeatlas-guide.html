@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#080a10">
+  <meta name="description" content="CodeAtlas MCP explained clearly: everyday analogy, clickable architecture, real example, tools, tests and implementation limits. An AI engineering project by Neeli Yaswanth Kumar.">
+  <title>CodeAtlas MCP — How it works | Neeli Yaswanth Kumar</title>
+  <link rel="icon" href="../signal-icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../architecture.css?v=1">
+  <script src="../architecture.js?v=1" defer></script>
+</head>
+<body data-project="codeatlas">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="topbar"><div class="shell"><a class="mark" href="../index.html#work"><span class="mark-symbol">N</span><span>NYK / BLUEPRINTS<small>AI SYSTEMS EXPLAINED</small></span></a><div class="toplinks"><a href="../index.html#work">← All projects</a><a href="codeatlas-mcp.html">Interactive demo</a><a class="top-demo" href="https://github.com/kyaswanthneeli-stack/codeatlas-mcp" target="_blank" rel="noopener noreferrer">Source ↗</a></div></div></header>
+  <main id="main"><div class="shell">
+    <section class="guide-hero"><span class="guide-kicker">SYSTEM BLUEPRINT / 01 · LOCAL PYTHON / STDIO MCP</span><h1>CodeAtlas MCP<span>.</span></h1><p class="lead">A map of your Python code — for coding assistants. CodeAtlas reads a local Python repository, builds a structural index of symbols and possible calls, then lets an MCP-compatible coding assistant ask focused questions without repeatedly reading whole files.</p><div class="meta"><span class="live">Local executable server · Public browser sample</span><span>Python · AST · SQLite · MCP</span><span>16 documented tests</span></div></section>
+    <div class="guide-layout">
+      <aside class="guide-sidebar" aria-label="On this page"><span>JUMP TO /</span><a href="#overview">Plain English</a><a href="#flow">Architecture</a><a href="#example">Example</a><a href="#technology">Technology</a><a href="#evidence">Proof</a><a href="#limitations">Limitations</a><a href="#glossary">Glossary</a></aside>
+      <div class="guide-content">
+        <section class="guide-section" id="overview">
+          <span class="section-kicker">01 / START HERE</span><h2>What is it, <em>really?</em></h2>
+          <p>A coding assistant may need to know which function calls another or which tests could be relevant. Reading many full files creates extra context and noise. A structural index lets the assistant ask smaller, more targeted questions.</p>
+          <div class="story-card"><span class="small">IN EVERYDAY LANGUAGE</span><p>Think of a large codebase as a city. Before visiting every building, a map shows where roads connect. CodeAtlas makes a map of Python definitions and likely call relationships; it cannot tell you everything inside each building.</p></div>
+          <div class="two-cards"><div class="detail-card"><small>WHO IT HELPS</small><h3>The practical use case</h3><p>A coding assistant may need to know which function calls another or which tests could be relevant. Reading many full files creates extra context and noise. A structural index lets the assistant ask smaller, more targeted questions.</p></div><div class="detail-card"><small>WHAT YOU CAN VERIFY</small><h3>Local MCP server</h3><p>Public source code, architecture documentation, tests and the labeled browser demo are linked below. The implementation boundaries are documented, not hidden.</p></div></div>
+        </section>
+        <section class="guide-section" id="flow">
+          <span class="section-kicker">02 / INTERACTIVE BLUEPRINT</span><h2>Follow the <em>architecture.</em></h2>
+          <p class="intro">Select any stage below. The explanation shows what enters that part of the system, what it does and what comes out. This diagram explains real code architecture; it is not connected to the running backend.</p>
+          <div class="flow-map" role="group" aria-label="CodeAtlas MCP architecture steps"><button type="button" class="flow-step is-active" aria-pressed="true" data-title="Choose source" data-description="The user supplies a local Python repository that the tool is allowed to inspect. The indexer reads eligible .py files as text; it does not import or execute the application." data-input="A repository root containing Python files" data-output="Eligible .py text and parse errors"><span class="n">01</span><span class="t">Python source</span></button>
+<span class="flow-arrow" aria-hidden="true">→</span><button type="button" class="flow-step" aria-pressed="false" data-title="Parse structure" data-description="Python&#39;s standard AST parser extracts functions, classes, signatures, docstrings and call sites. Lexical and imported-name aliases produce possible callee candidates; dynamic dispatch can remain unresolved." data-input="Python source code as text" data-output="Definitions, imports and candidate calls"><span class="n">02</span><span class="t">AST analysis</span></button>
+<span class="flow-arrow" aria-hidden="true">→</span><button type="button" class="flow-step" aria-pressed="false" data-title="Store snapshot" data-description="The extracted symbols and call candidates are placed in a SQLite snapshot. Reindexing rebuilds that snapshot so removed files do not keep stale rows." data-input="Definitions and candidate edges" data-output="Searchable local SQLite index"><span class="n">03</span><span class="t">SQLite index</span></button>
+<span class="flow-arrow" aria-hidden="true">→</span><button type="button" class="flow-step" aria-pressed="false" data-title="Receive a query" data-description="A CLI command or one of five stdio MCP tools asks for a symbol, module summary, bounded call graph or potentially impacted tests. The client chooses a repository-rooted query." data-input="find_symbols, summarize_module, get_call_graph, find_impacted_tests" data-output="Bounded structural context"><span class="n">04</span><span class="t">CLI / MCP</span></button>
+<span class="flow-arrow" aria-hidden="true">→</span><button type="button" class="flow-step" aria-pressed="false" data-title="Return evidence" data-description="The result gives stable symbol IDs, line ranges, static graph candidates and unresolved-call information when available. A coding agent can decide what real source it still needs to read." data-input="Indexed graph query" data-output="Focused candidate graph rather than a complete file"><span class="n">05</span><span class="t">Useful context</span></button></div>
+          <div class="flow-readout" aria-live="polite" aria-atomic="true">
+            <span class="small">IN FOCUS / <span id="stepCounter">Step 1 of 5</span></span>
+            <h3 id="stepTitle">Choose source</h3><p id="stepExplanation" class="explanation">The user supplies a local Python repository that the tool is allowed to inspect. The indexer reads eligible .py files as text; it does not import or execute the application.</p>
+            <div class="flow-io"><div><b>WHAT GOES IN</b><span id="stepInput">A repository root containing Python files</span></div><div><b>WHAT COMES OUT</b><span id="stepOutput">Eligible .py text and parse errors</span></div></div>
+          </div>
+          <div class="flow-controls"><small>Tip: use ← → arrow keys while a stage is focused.</small><button type="button" id="nextStep">Next step →</button></div>
+          <p class="flow-caption">The visual flow is an educational representation. For the exact code paths, open the source and engineering documentation.</p>
+        </section>
+        <section class="guide-section" id="example">
+          <span class="section-kicker">03 / WALK THROUGH A QUESTION</span><h2>What does it <em>look like?</em></h2>
+          <p>These simplified examples are drawn from the repository's documented behavior. They explain what to expect; they do not execute an API request from this page.</p>
+          <div class="example-layout"><div class="example-box"><span class="small">EXAMPLE INPUT</span><h3>What you provide</h3><pre>def add(a, b): return a + b
+
+def twice(x): return add(x, x)
+
+# test_maths.py
+# test_twice() calls twice(2)</pre></div><div class="example-box"><span class="small">EXAMPLE OUTCOME</span><h3>What the system determines</h3><pre>Query: get_call_graph(&#39;maths.py:twice&#39;)
+Candidate relationship: twice → add
+
+Query: find_impacted_tests(&#39;maths.py:add&#39;)
+Candidate test: test_maths.py:test_twice</pre></div></div>
+          <p class="mini-note">Illustrative fixture from the repository README; the actual MCP server runs locally, not in this browser. Relationships are static candidates, not proof of runtime execution or test coverage.</p>
+          <div class="guide-actions"><a class="action primary" href="codeatlas-mcp.html">Open interactive browser demo ↗</a></div>
+        </section>
+        <section class="guide-section" id="technology">
+          <span class="section-kicker">04 / WHY THE TECH EXISTS</span><h2>Every component <em>has a job.</em></h2>
+          <p>Instead of a giant list of tools, these are the actual responsibilities each technology has in this project.</p><div class="tech-grid"><div class="tech-item"><strong>Python AST</strong><p>Parses syntax without executing the target source.</p></div>
+<div class="tech-item"><strong>SQLite</strong><p>Stores a repeatable local symbol and candidate-call snapshot.</p></div>
+<div class="tech-item"><strong>MCP stdio</strong><p>Lets a compatible tool client request index, graph and summary operations.</p></div>
+<div class="tech-item"><strong>CLI and tests</strong><p>Make the indexing behavior inspectable and testable locally.</p></div></div>
+        </section>
+        <section class="guide-section" id="evidence">
+          <span class="section-kicker">05 / OPEN THE EVIDENCE</span><h2>Show the <em>working parts.</em></h2>
+          <div class="clarity-grid"><div class="clarity-item yes"><h3>✓ Implemented</h3><ul><li>Indexes Python classes, functions, nested and async definitions.</li><li>Handles direct-name and some import-alias static call candidates.</li><li>Offers five local MCP tools and a CLI; queries support edge/depth bounds.</li><li>Reports possible test callers by walking reverse graph candidates.</li><li>Has 15 indexing tests and one stdio protocol integration test.</li></ul></div><div class="clarity-item no"><h3>○ Not claimed</h3><ul><li>Python-only; uses standard-library AST rather than Tree-sitter.</li><li>Static candidates cannot resolve arbitrary runtime dispatch, inheritance, reflection or wildcard imports.</li><li>An impacted test is a possible caller, not confirmed test coverage.</li><li>The public graph demo is a fixed fixture; private repositories are not uploaded.</li><li>Token payload comparisons are real measurements of different information; no agent cost-saving percentage is proven.</li></ul></div></div>
+          <div class="guide-actions"><a class="action primary" href="https://github.com/kyaswanthneeli-stack/codeatlas-mcp" target="_blank" rel="noopener noreferrer">Read the source code ↗</a><a class="action" href="https://github.com/kyaswanthneeli-stack/codeatlas-mcp/actions/workflows/ci.yml" target="_blank" rel="noopener noreferrer">View CI &amp; 16 tests ↗</a><a class="action" href="https://github.com/kyaswanthneeli-stack/codeatlas-mcp/blob/main/docs/ARCHITECTURE_AND_BENCHMARK.md" target="_blank" rel="noopener noreferrer">Architecture notes ↗</a></div>
+        </section>
+        <section class="guide-section" id="limitations">
+          <span class="section-kicker">06 / QUESTIONS THAT MATTER</span><h2>Understand the <em>trade-offs.</em></h2><div class="two-cards"><div class="detail-card"><small>COMMON QUESTION</small><h3>Does it read the code?</h3><p>Yes. It reads eligible Python files while indexing, then returns focused structural summaries for later questions.</p></div><div class="detail-card"><small>COMMON QUESTION</small><h3>Does it generate answers with an LLM?</h3><p>No. This repository is an indexing and MCP-tool project; it does not run a language model.</p></div><div class="detail-card"><small>COMMON QUESTION</small><h3>Are the call graphs exact?</h3><p>No. The code creates static candidate relationships. Dynamic behavior can produce missed or incorrect edges.</p></div></div>
+          <p class="mini-note">Being clear about limitations is part of engineering: the project shows patterns and testable code, not a promise of production security, measured cost reduction or unconfigured model inference.</p>
+        </section>
+        <section class="guide-section" id="glossary"><span class="section-kicker">07 / KEY WORDS</span><h2>No jargon <em>left behind.</em></h2><div class="glossary"><dl><div><dt>AST</dt><dd>A tree describing the syntax of Python source code.</dd></div><div><dt>Symbol</dt><dd>A named item such as a function, method or class.</dd></div><div><dt>Call graph</dt><dd>A map of which functions may call other functions.</dd></div><div><dt>MCP</dt><dd>A standard way for AI clients to call tools and access structured context.</dd></div></dl></div><div class="guide-actions"><a class="action" href="agentgate-guide.html">Next: AgentGate ↗</a><a class="action" href="routewise-guide.html">Next: RouteWise ↗</a></div></section>
+      </div>
+    </div>
+    <footer class="guide-footer"><span>NYK / AI ENGINEERING BLUEPRINTS · Built for clear technical communication</span><a href="../index.html#work">← Back to the portfolio</a></footer>
+  </div></main>
+</body></html>
