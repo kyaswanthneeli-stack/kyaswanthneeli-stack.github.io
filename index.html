@@ -156,7 +156,7 @@
               <a href="https://routewise-production-c8aefb65.up.railway.app/docs" target="_blank" rel="noopener noreferrer">Live API docs <span aria-hidden="true">↗</span></a>
               <a href="https://github.com/kyaswanthneeli-stack/routewise" target="_blank" rel="noopener noreferrer">Source <span aria-hidden="true">↗</span></a>
             </div>
-            <details class="project-scope"><summary>What's implemented, and what's not</summary><p>Route selection is based on deterministic heuristics, not trained semantic routing. The public backend returns clearly labeled fixtures until real upstream providers are configured. Browser demo outcomes are simulated.</p></details>
+            <details class="project-scope"><summary>What's implemented, and what's not</summary><p>Route selection is based on deterministic heuristics, not trained semantic routing. The public route-inspection endpoint computes real server-side decisions; generating LLM answers still requires configured upstream providers.</p></details>
           </div>
           <div class="project-visual" aria-label="Conceptual diagram: Incoming chat request is routed to fast or reasoning provider with bounded retry on eligible failures">
             <div class="visual-sup"><span>ARCHITECTURE / 003</span><span class="visual-led">ROUTING</span></div>
@@ -181,7 +181,7 @@
           <a class="proof-tile reveal" href="https://github.com/kyaswanthneeli-stack/codeatlas-mcp/actions/workflows/ci.yml" target="_blank" rel="noopener noreferrer"><span class="proof-tile-top">03 / VERIFICATION</span><strong>53</strong><span class="proof-title">Automated Python tests</span><span class="proof-description">16 for CodeAtlas, 19 for AgentGate and 18 for RouteWise, with passing repository CI.</span><span class="proof-link">Explore test evidence ↗</span></a>
           <a class="proof-tile proof-tile-note reveal" href="https://github.com/kyaswanthneeli-stack/codeatlas-mcp/blob/main/docs/ARCHITECTURE_AND_BENCHMARK.md" target="_blank" rel="noopener noreferrer"><span class="proof-tile-top">04 / MEASUREMENT</span><strong class="proof-symbol">↗</strong><span class="proof-title">Honest benchmarks</span><span class="proof-description">CodeAtlas measures tokenizer payloads, without claiming proven coding-agent cost reduction.</span><span class="proof-link">Read the methodology ↗</span></a>
         </div>
-        <p class="proof-footnote">These are engineering portfolio demonstrations. The browser explorers use sample data, while the authenticated Railway backends expose real service endpoints. Their limitations are documented in each repository.</p>
+        <p class="proof-footnote">These are engineering portfolio demonstrations. CodeAtlas uses a fixed sample graph; AgentGate and RouteWise browser explorers call real public FastAPI endpoints, but privileged actions and model generation remain restricted or unconfigured. Their limitations are documented in each repository.</p>
       </div>
     </section>
 
