@@ -1,0 +1,79 @@
+/* Motion layer for the GitHub Pages portfolio.
+   Uses native CSS/JS only; respects reduced-motion preferences. */
+:root { --mouse-x:50%; --mouse-y:50%; }
+html { scroll-padding-top:100px; }
+body { overflow-x:clip; }
+body::after {
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.16;
+  background-image:linear-gradient(to right,#b2e7f00b 1px,transparent 1px),linear-gradient(to bottom,#b2e7f00b 1px,transparent 1px);
+  background-size:68px 68px;
+  -webkit-mask-image:radial-gradient(ellipse at 55% 32%,black,transparent 78%);
+  mask-image:radial-gradient(ellipse at 55% 32%,black,transparent 78%);
+}
+main.container,.footer.container { position:relative;isolation:isolate; }
+.scroll-meter {position:fixed;inset:0 auto auto 0;width:var(--page-progress,0%);height:3px;z-index:50;background:linear-gradient(90deg,#8cebd5,#a9b6ff,#f4c0a4);pointer-events:none;box-shadow:0 0 16px #8cebd588;}
+.hero{position:relative;min-height:650px}
+.hero>div:first-child{position:relative;z-index:2}
+.hero .eyebrow{display:inline-flex;align-items:center;gap:10px;padding:9px 12px;border:1px solid #8cebd52e;background:#8cebd50c;border-radius:100px;letter-spacing:.12em}
+.hero .eyebrow:before{content:"";display:block;width:7px;height:7px;border-radius:50%;background:#8cebd5;box-shadow:0 0 0 4px #8cebd515,0 0 17px #8cebd570;animation:pulse-soft 3.5s ease-in-out infinite}
+.hero h1{position:relative;z-index:1}
+.hero h1 span{background:linear-gradient(110deg,#8cebd5,#a4e9ff,#c8b7ff,#8cebd5);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer-text 11s linear infinite}
+.hero-visual{position:relative;display:grid;place-items:center;min-height:550px;isolation:isolate;perspective:1100px;transform:rotateY(var(--hero-ry,0deg)) rotateX(var(--hero-rx,0deg));transition:transform .35s ease-out;will-change:transform}
+.hero-visual::before{content:"";position:absolute;width:84%;aspect-ratio:1/1;border-radius:50%;background:radial-gradient(circle,#72dac726 5%,#6e9ddf19 28%,#b89bfc0c 51%,transparent 68%);filter:blur(4px);animation:aurora-breathe 9s ease-in-out infinite;z-index:-3;pointer-events:none}
+.hero-visual::after{content:"";position:absolute;width:85%;height:85%;inset:7.5%;background:radial-gradient(ellipse at center,transparent 56%,#8cebd51e 70%,transparent 79%);border-radius:50%;z-index:-2;pointer-events:none}
+.hero .console {width:100%;max-width:510px;z-index:3;margin:36px auto 22px;transform:translateY(0px) rotate(1deg);animation:console-float 7s ease-in-out infinite;box-shadow:0 36px 100px #0009,0 0 65px #5cc2b112;}
+.hero .console:before{inset:-16px;border-color:#7de1d52e}
+.hero .flow-node{position:relative;transition:background .25s,border-color .25s,transform .25s;animation:node-awake 9s ease-in-out infinite}
+.hero .flow-node:nth-of-type(2){animation-delay:-2s}
+.hero .flow-node:nth-of-type(3){animation-delay:-4s}
+.hero .flow-node:nth-of-type(4){animation-delay:-6s}
+.hero .flow-node:nth-of-type(5){animation-delay:-8s}
+.hero .flow-node b{position:relative;z-index:1}
+.hero .console-foot{border-top:1px solid #ffffff16;margin-top:15px}
+.hero-orbit{position:absolute;left:50%;top:50%;border-radius:50%;border:1px solid #8fdfd531;pointer-events:none;z-index:-1;transform:translate(-50%,-50%);}
+.hero-orbit-a{width:111%;aspect-ratio:1;box-shadow:0 0 70px #8cebd50a inset;border-style:dashed;animation:orbit-spin 75s linear infinite}
+.hero-orbit-b{width:93%;aspect-ratio:1;border-color:#b1bafa32;animation:orbit-spin 57s linear infinite reverse}
+.hero-orbit-c{width:72%;aspect-ratio:1;border-color:#8cebd51d;}
+.orbit-dot{position:absolute;inset:auto auto auto 50%;top:-5px;width:9px;height:9px;background:#8cebd5;box-shadow:0 0 18px #8cebd5;border-radius:50%}
+.orbit-dot-alt{background:#b8b2ff;box-shadow:0 0 18px #b8b2ff;top:auto;bottom:-5px}
+.float-satellite{position:absolute;z-index:4;display:flex;align-items:center;gap:9px;padding:11px 14px;pointer-events:none;border:1px solid #7da6bb60;background:linear-gradient(125deg,#162d42ed,#14273be5);border-radius:13px;box-shadow:0 16px 40px #0006,0 0 34px #9be2ed0b;backdrop-filter:blur(14px);white-space:nowrap;color:#e6f7ff;font:600 11px/1.4 'Space Grotesk',system-ui,sans-serif;animation:satellite-bob 6s ease-in-out infinite}
+.sat-icon{width:27px;height:27px;display:grid;place-items:center;border-radius:9px;background:#8cebd519;color:#9df4df;border:1px solid #8cebd532;font:700 12px monospace}
+.satellite-one{top:13%;left:-8%;animation-delay:-2.5s;transform:rotate(-5deg)}
+.satellite-two{top:26%;right:-12%;animation-delay:-4s;transform:rotate(5deg)}
+.satellite-three{bottom:16%;left:-10%;animation-delay:-1s;transform:rotate(3deg)}
+.satellite-four{bottom:7%;right:-5%;animation-delay:-3.5s;transform:rotate(-3deg)}
+.orbit-caption{position:absolute;bottom:-23px;right:13px;color:#7c97ae;font:500 10px 'Space Grotesk',sans-serif;letter-spacing:.09em;text-transform:uppercase}
+.project-card{position:relative;overflow:hidden;transition:transform .3s cubic-bezier(.2,.75,.3,1),border-color .3s,box-shadow .3s;transform:perspective(900px) rotateX(var(--card-rx,0deg)) rotateY(var(--card-ry,0deg)) translateY(var(--card-y,0px));transform-style:preserve-3d;}
+.project-card::before{content:"";pointer-events:none;position:absolute;inset:0;z-index:0;opacity:0;transition:opacity .3s;background:radial-gradient(380px circle at var(--spot-x,50%) var(--spot-y,50%),#83e4d119,transparent 70%);}
+.project-card:hover{--card-y:-7px;border-color:#81dccc;box-shadow:0 27px 70px #0005,0 0 45px #8cebd509}
+.project-card:hover::before,.project-card:focus-within::before{opacity:1}
+.project-card>*{position:relative}
+.project-card .card-diagram{overflow:hidden}
+.project-card .card-diagram span{transition:background .2s,transform .3s;animation:diagram-float 6s ease-in-out infinite}
+.project-card .card-diagram span:nth-of-type(2){animation-delay:-1.4s}
+.project-card .card-diagram span:nth-of-type(3){animation-delay:-2.8s}
+.project-card .card-diagram span:nth-of-type(4){animation-delay:-4.2s}
+.project-card:hover .card-diagram span{background:#214758}
+.small-card,.evidence,.case-card{transition:transform .24s ease,border-color .24s ease,box-shadow .24s ease}
+.small-card:hover,.evidence:hover,.case-card:hover{transform:translateY(-5px);border-color:#7dbcb6;box-shadow:0 20px 48px #0003}
+.contact{position:relative;overflow:hidden}
+.contact:before{content:"";position:absolute;right:-18%;top:-68%;width:65%;aspect-ratio:1;border:1px solid #affbec29;border-radius:50%;box-shadow:0 0 0 55px #d6ecff04,0 0 0 108px #d6ecff04;pointer-events:none}
+.contact>*{position:relative}
+.motion-ready .reveal-target{opacity:0;transform:translateY(27px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.75,.2,1)}
+.motion-ready .reveal-target.is-visible{opacity:1;transform:translateY(0)}
+.motion-ready .reveal-target:nth-child(2){transition-delay:90ms}
+.motion-ready .reveal-target:nth-child(3){transition-delay:160ms}
+@keyframes console-float{0%,100%{transform:translateY(-3px) rotate(.8deg)}50%{transform:translateY(12px) rotate(-.5deg)}}
+@keyframes satellite-bob{0%,100%{translate:0 -6px}50%{translate:0 11px}}
+@keyframes orbit-spin{from{rotate:0deg}to{rotate:360deg}}
+@keyframes pulse-soft{0%,100%{opacity:1;scale:1}50%{opacity:.65;scale:.78}}
+@keyframes aurora-breathe{0%,100%{opacity:.62;scale:1}50%{opacity:1;scale:1.1}}
+@keyframes shimmer-text{0%{background-position:0% 50%}100%{background-position:220% 50%}}
+@keyframes node-awake{0%,77%,100%{border-color:#ffffff16;background:#ffffff08}82%,89%{border-color:#8cebd563;background:#8cebd515}}
+@keyframes diagram-float{0%,100%{translate:0 0}50%{translate:0 -4px}}
+@media(max-width:1170px){.satellite-one{left:-3%}.satellite-two{right:-5%}.satellite-three{left:-4%}.satellite-four{right:-2%}.float-satellite{font-size:10px;padding:9px 10px}}
+@media(max-width:850px){.hero-visual{min-height:510px}.hero .console{max-width:540px}.float-satellite{font-size:10px}.satellite-one{left:0}.satellite-two{right:0}.satellite-three{left:2%}.satellite-four{right:2%}}
+@media(max-width:760px){.hero{overflow:visible}.hero-visual{min-height:450px;margin:0 6px}.hero .console{max-width:100%;margin:55px 0 0;padding:20px}.hero-orbit-a{width:100%}.hero-orbit-b{width:82%}.float-satellite{padding:7px 9px;border-radius:9px;font-size:9px}.sat-icon{height:21px;width:21px;font-size:10px}.satellite-one{left:0;top:2%}.satellite-two{right:-1%;top:8%}.satellite-three{left:2%;bottom:6%}.satellite-four{right:0;bottom:0}.orbit-caption{display:none}.project-card{transform:none!important}}
+@media(max-width:390px){.hero-visual{min-height:410px}.float-satellite{font-size:8px}.satellite-two{top:5%}.satellite-three{bottom:1%}.satellite-four{bottom:-4%}}
+@media(hover:none),(pointer:coarse){.hero-visual{transform:none!important}.project-card{transform:none!important}}
+@media(prefers-reduced-motion:reduce){.scroll-meter{display:none}.hero .console,.hero .flow-node,.hero .eyebrow:before,.hero h1 span,.hero-visual:before,.hero-orbit,.float-satellite,.card-diagram span{animation:none!important}.hero-visual,.project-card{transform:none!important;transition:none!important}.motion-ready .reveal-target{opacity:1;transform:none;transition:none}.small-card:hover,.evidence:hover,.case-card:hover{transform:none}}
