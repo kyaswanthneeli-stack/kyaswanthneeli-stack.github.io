@@ -13,3 +13,19 @@
 @media(max-width:1100px){.hero{gap:38px}.project-grid{grid-template-columns:1fr 1fr}.project-card:last-child{grid-column:span 2}.evidence-grid{grid-template-columns:1fr 1fr}.evidence:last-child{grid-column:span 2}}
 @media(max-width:760px){.container{padding:0 19px}.nav{min-height:74px;flex-wrap:wrap;padding-top:14px;padding-bottom:13px;gap:15px}.brand-copy{font-size:12px}.nav-links{gap:13px;flex-wrap:wrap}.nav-links>a{font-size:11px}.nav-links>a.nav-cta{padding:8px 12px}.hero{grid-template-columns:1fr;gap:42px;padding-top:62px;padding-bottom:58px}.hero h1{font-size:clamp(43px,11vw,65px)}.console{transform:none}.proofbar{grid-template-columns:1fr 1fr}.proof:nth-child(2){border-right:0}.proof:nth-child(-n+2){border-bottom:1px solid var(--line)}.proof{padding:18px}.proof strong{font-size:25px}.section{padding-top:74px}.section-heading{display:block}.section-heading p{margin-top:20px}.project-grid,.evidence-grid,.small-grid,.experience{grid-template-columns:1fr}.project-card:last-child,.evidence:last-child{grid-column:auto}.contact{padding:32px 24px;margin-top:75px}.footer{padding-bottom:30px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+
+/* Expandable professional case studies */
+.case-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+.case-card{display:flex;flex-direction:column;min-width:0;padding:26px;border:1px solid var(--line);background:linear-gradient(155deg,#11273a,#0c1b2d);border-radius:18px}
+.case-card h3{font:600 23px 'Space Grotesk',sans-serif;letter-spacing:-.04em;line-height:1.2;margin:19px 0 12px}
+.case-card>p{font-size:13px;line-height:1.75;color:var(--muted);margin:0 0 18px}
+.case-flow{font:600 11px/1.65 'Space Grotesk',sans-serif;color:#abeddb;padding:12px;border:1px solid #7ee7d52b;border-radius:10px;background:#75dfc808;margin-bottom:17px}
+.case-card details{margin-top:auto;border-top:1px solid var(--line);padding-top:18px}
+.case-card summary{display:flex;justify-content:space-between;align-items:center;gap:12px;list-style:none;cursor:pointer;color:var(--accent);font-size:12px;font-weight:700}
+.case-card summary::-webkit-details-marker{display:none}
+.case-card details[open] summary span{transform:rotate(45deg)}
+.case-card details p{font-size:12px;line-height:1.75;color:#b3c4d3}
+.case-card details strong{color:#edf9f6}
+.case-card .case-caveat{border-top:1px solid #ffffff19;padding-top:12px;color:#89a3b8}
+@media(max-width:1100px){.case-grid{grid-template-columns:1fr 1fr}.case-card:last-child{grid-column:span 2}}
+@media(max-width:760px){.case-grid{grid-template-columns:1fr}.case-card:last-child{grid-column:auto}}
