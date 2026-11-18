@@ -11,9 +11,11 @@
   <meta property="og:url" content="https://kyaswanthneeli-stack.github.io/">
   <link rel="canonical" href="https://kyaswanthneeli-stack.github.io/">
   <link rel="stylesheet" href="portfolio-v2.css?v=1">
+  <link rel="stylesheet" href="portfolio-motion.css?v=1">
   <title>Neeli Yaswanth Kumar — Generative AI & Python Engineer</title>
 </head>
 <body>
+  <div class="scroll-meter" aria-hidden="true"></div>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="nav-wrap">
     <nav class="nav container" aria-label="Main navigation">
@@ -41,7 +43,15 @@
         </div>
         <p class="availability tiny"><span class="dot" aria-hidden="true"></span> Open to international remote AI / Python engineering opportunities · India</p>
       </div>
-      <div class="console" role="img" aria-label="Illustrative architecture: requests enter the Python service, pass through context and tool orchestration, and return an observable response">
+      <div class="hero-visual">
+        <div class="hero-orbit hero-orbit-a" aria-hidden="true"><span class="orbit-dot"></span></div>
+        <div class="hero-orbit hero-orbit-b" aria-hidden="true"><span class="orbit-dot orbit-dot-alt"></span></div>
+        <div class="hero-orbit hero-orbit-c" aria-hidden="true"></div>
+        <div class="float-satellite satellite-one" aria-hidden="true"><span class="sat-icon">{ }</span><span>Python + FastAPI</span></div>
+        <div class="float-satellite satellite-two" aria-hidden="true"><span class="sat-icon">↗</span><span>Agentic AI</span></div>
+        <div class="float-satellite satellite-three" aria-hidden="true"><span class="sat-icon">◇</span><span>MCP + RAG</span></div>
+        <div class="float-satellite satellite-four" aria-hidden="true"><span class="sat-icon">✓</span><span>CI verified</span></div>
+        <div class="console" role="img" aria-label="Illustrative architecture: requests enter the Python service, pass through context and tool orchestration, and return an observable response">
         <div class="console-bar"><span class="lights" aria-hidden="true"><i></i><i></i><i></i></span><span>systems / architecture</span><span>01—04</span></div>
         <h3>From request to reliable response</h3>
         <div class="flow-node"><b>User request</b><small>INPUT</small></div>
@@ -52,6 +62,8 @@
         <div class="connector" aria-hidden="true">↓</div>
         <div class="flow-node"><b>Response + observability</b><small>OUTPUT</small></div>
         <div class="console-foot"><span>Conceptual diagram · not a live trace</span><span class="micro-tag">CODE → TEST → DEMO</span></div>
+        </div>
+        <div class="orbit-caption" aria-hidden="true">Move your cursor · explore the system</div>
       </div>
     </section>
     <div class="proofbar" aria-label="Portfolio at a glance">
@@ -167,7 +179,7 @@
       </div>
     </section>
     <section class="contact" id="contact">
-      <span class="eyebrow">05 / Let's build something useful</span>
+      <span class="eyebrow">06 / Let's build something useful</span>
       <h2>Looking for a Python + AI engineer?</h2>
       <p>I'm interested in Generative AI, agentic systems, LLM applications, and Python backend roles with teams that value clear thinking and shipped software. My source, design notes, and live API documentation are available above.</p>
       <div class="actions">
@@ -178,5 +190,6 @@
     </section>
   </main>
   <footer class="footer container"><span>© 2026 Neeli Yaswanth Kumar · Built with HTML, CSS, and practical engineering.</span><span><a href="#top">Back to top ↑</a> · <a href="https://github.com/kyaswanthneeli-stack/kyaswanthneeli-stack.github.io" target="_blank" rel="noopener noreferrer">View website source ↗</a></span></footer>
+  <script src="portfolio-motion.js?v=1" defer></script>
 </body>
 </html>
