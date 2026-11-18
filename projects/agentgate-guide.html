@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#080a10">
+  <meta name="description" content="AgentGate explained clearly: everyday analogy, clickable architecture, real example, tools, tests and implementation limits. An AI engineering project by Neeli Yaswanth Kumar.">
+  <title>AgentGate — How it works | Neeli Yaswanth Kumar</title>
+  <link rel="icon" href="../signal-icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../architecture.css?v=1">
+  <script src="../architecture.js?v=1" defer></script>
+</head>
+<body data-project="agentgate">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="topbar"><div class="shell"><a class="mark" href="../index.html#work"><span class="mark-symbol">N</span><span>NYK / BLUEPRINTS<small>AI SYSTEMS EXPLAINED</small></span></a><div class="toplinks"><a href="../index.html#work">← All projects</a><a href="agentgate.html">Interactive demo</a><a class="top-demo" href="https://github.com/kyaswanthneeli-stack/agentgate" target="_blank" rel="noopener noreferrer">Source ↗</a></div></div></header>
+  <main id="main"><div class="shell">
+    <section class="guide-hero"><span class="guide-kicker">SYSTEM BLUEPRINT / 02 · HOSTED FASTAPI / DEMO ADAPTERS</span><h1>AgentGate<span>.</span></h1><p class="lead">A security checkpoint between an AI agent and its tools. AgentGate is a hosted Python/FastAPI prototype that validates agent tool requests against a small allowlist, checks selected patterns, enforces simple limits, and requires a one-use approval for a sensitive demonstration action.</p><div class="meta"><span class="live">Railway backend · Browser simulation</span><span>FastAPI · Pydantic · HMAC · Docker</span><span>14 documented tests</span></div></section>
+    <div class="guide-layout">
+      <aside class="guide-sidebar" aria-label="On this page"><span>JUMP TO /</span><a href="#overview">Plain English</a><a href="#flow">Architecture</a><a href="#example">Example</a><a href="#technology">Technology</a><a href="#evidence">Proof</a><a href="#limitations">Limitations</a><a href="#glossary">Glossary</a></aside>
+      <div class="guide-content">
+        <section class="guide-section" id="overview">
+          <span class="section-kicker">01 / START HERE</span><h2>What is it, <em>really?</em></h2>
+          <p>An agent with unrestricted tool access could request unexpected actions or leak sensitive text. This prototype puts predictable checks between a request and two fixed demonstration tools.</p>
+          <div class="story-card"><span class="small">IN EVERYDAY LANGUAGE</span><p>Picture an office reception desk. It checks who&#39;s allowed in, what they are asking to do, whether a manager&#39;s permission is required, and what sensitive details should be hidden. AgentGate is a small software version of that checkpoint.</p></div>
+          <div class="two-cards"><div class="detail-card"><small>WHO IT HELPS</small><h3>The practical use case</h3><p>An agent with unrestricted tool access could request unexpected actions or leak sensitive text. This prototype puts predictable checks between a request and two fixed demonstration tools.</p></div><div class="detail-card"><small>WHAT YOU CAN VERIFY</small><h3>Hosted demo API</h3><p>Public source code, architecture documentation, tests and the labeled browser demo are linked below. The implementation boundaries are documented, not hidden.</p></div></div>
+        </section>
+        <section class="guide-section" id="flow">
+          <span class="section-kicker">02 / INTERACTIVE BLUEPRINT</span><h2>Follow the <em>architecture.</em></h2>
+          <p class="intro">Select any stage below. The explanation shows what enters that part of the system, what it does and what comes out. This diagram explains real code architecture; it is not connected to the running backend.</p>
+          <div class="flow-map" role="group" aria-label="AgentGate architecture steps"><button type="button" class="flow-step is-active" aria-pressed="true" data-title="Authenticate" data-description="The FastAPI endpoint checks the X-API-Key header against the server-side client credential. The approval and audit endpoints require a different administrator key." data-input="A tool request plus client credential" data-output="Authenticated request or HTTP 401"><span class="n">01</span><span class="t">Client key</span></button>
+<span class="flow-arrow" aria-hidden="true">→</span><button type="button" class="flow-step" aria-pressed="false" data-title="Check policy" data-description="Only search_docs and send_notification are recognized. The code validates expected argument keys and applies a basic regex check for two instruction-override patterns and payload length." data-input="Tool name and arguments" data-output="Allowed shape or explicit policy denial"><span class="n">02</span><span class="t">Allowlist</span></button>
+<span class="flow-arrow" aria-hidden="true">→</span><button type="button" class="flow-step" aria-pressed="false" data-title="Apply limits" data-description="The service enforces a process-local per-session call cap. send_notification also requires an administrator-issued one-time approval bound to the exact session, tool and arguments; the token expires after 60 seconds." data-input="Session identity and optional approval token" data-output="Accepted demo request or 403/429"><span class="n">03</span><span class="t">Quota / approval</span></button>
+<span class="flow-arrow" aria-hidden="true">→</span><button type="button" class="flow-step" aria-pressed="false" data-title="Redact data" data-description="Nested values are recursively sanitized for email addresses, certain key patterns and sensitive key names. Regex redaction is intentionally incomplete and must not be treated as a universal PII detector." data-input="Arguments that passed policy" data-output="Sanitized arguments for fixed demo adapter"><span class="n">04</span><span class="t">Sanitization</span></button>
+<span class="flow-arrow" aria-hidden="true">→</span><button type="button" class="flow-step" aria-pressed="false" data-title="Return / audit" data-description="The fixed adapter returns sample search results or a notification-shaped simulation with queued:false. Successful calls add bounded audit metadata without raw arguments; denied calls are not currently audited." data-input="Allowed, sanitized demo call" data-output="Demo result and bounded metadata audit"><span class="n">05</span><span class="t">Demo adapter</span></button></div>
+          <div class="flow-readout" aria-live="polite" aria-atomic="true">
+            <span class="small">IN FOCUS / <span id="stepCounter">Step 1 of 5</span></span>
+            <h3 id="stepTitle">Authenticate</h3><p id="stepExplanation" class="explanation">The FastAPI endpoint checks the X-API-Key header against the server-side client credential. The approval and audit endpoints require a different administrator key.</p>
+            <div class="flow-io"><div><b>WHAT GOES IN</b><span id="stepInput">A tool request plus client credential</span></div><div><b>WHAT COMES OUT</b><span id="stepOutput">Authenticated request or HTTP 401</span></div></div>
+          </div>
+          <div class="flow-controls"><small>Tip: use ← → arrow keys while a stage is focused.</small><button type="button" id="nextStep">Next step →</button></div>
+          <p class="flow-caption">The visual flow is an educational representation. For the exact code paths, open the source and engineering documentation.</p>
+        </section>
+        <section class="guide-section" id="example">
+          <span class="section-kicker">03 / WALK THROUGH A QUESTION</span><h2>What does it <em>look like?</em></h2>
+          <p>These simplified examples are drawn from the repository's documented behavior. They explain what to expect; they do not execute an API request from this page.</p>
+          <div class="example-layout"><div class="example-box"><span class="small">EXAMPLE INPUT</span><h3>What you provide</h3><pre>POST /tools/call
+X-API-Key: &lt;server-issued client key&gt;
+{
+  &quot;session&quot;: &quot;demo&quot;,
+  &quot;tool&quot;: &quot;search_docs&quot;,
+  &quot;arguments&quot;: {&quot;query&quot;: &quot;onboarding&quot;}
+}</pre></div><div class="example-box"><span class="small">EXAMPLE OUTCOME</span><h3>What the system determines</h3><pre>{
+  &quot;decision&quot;: &quot;allow&quot;,
+  &quot;result&quot;: {
+    &quot;matches&quot;: [{&quot;title&quot;: &quot;Operations handbook&quot;, &quot;...&quot;: &quot;...&quot;}]
+  }
+}
+
+send_notification requires a request-bound one-use admin approval first.</pre></div></div>
+          <p class="mini-note">Illustrative, simplified shape; the real endpoint also returns sanitized arguments and a call count. The adapter uses fixed demonstration data—no email or notification is actually sent. Never put client or admin keys in frontend JavaScript.</p>
+          <div class="guide-actions"><a class="action primary" href="agentgate.html">Open interactive browser demo ↗</a><a class="action" href="https://agentgate-production-00036f18.up.railway.app/docs" target="_blank" rel="noopener noreferrer">Open hosted API docs ↗</a></div>
+        </section>
+        <section class="guide-section" id="technology">
+          <span class="section-kicker">04 / WHY THE TECH EXISTS</span><h2>Every component <em>has a job.</em></h2>
+          <p>Instead of a giant list of tools, these are the actual responsibilities each technology has in this project.</p><div class="tech-grid"><div class="tech-item"><strong>FastAPI</strong><p>Receives authenticated tool calls and exposes health and documentation.</p></div>
+<div class="tech-item"><strong>Pydantic</strong><p>Validates request models and basic field constraints.</p></div>
+<div class="tech-item"><strong>HMAC / SHA-256</strong><p>Binds one-use approval tokens to exact request data.</p></div>
+<div class="tech-item"><strong>Regex + Python lock</strong><p>Handles simple policy patterns, redaction and process-local state.</p></div></div>
+        </section>
+        <section class="guide-section" id="evidence">
+          <span class="section-kicker">05 / OPEN THE EVIDENCE</span><h2>Show the <em>working parts.</em></h2>
+          <div class="clarity-grid"><div class="clarity-item yes"><h3>✓ Implemented</h3><ul><li>Client and administrator authentication are separated.</li><li>Only two named demo tools are allowlisted.</li><li>Approval tokens are request-bound, one-use and time-limited.</li><li>Redacts selected email/key patterns in nested values and outputs.</li><li>Hosted /health and /docs are publicly checkable; protected endpoints require credentials.</li></ul></div><div class="clarity-item no"><h3>○ Not claimed</h3><ul><li>The two adapters are simulated; send_notification does not send a real message.</li><li>Pattern checks are not robust against obfuscated, multilingual or indirect prompt injection.</li><li>Session counts, approvals and audits live in one server process and reset on restart.</li><li>The caller selects the session string, so per-session caps are not robust tenant quotas.</li><li>No general MCP proxy, production security certification or full denied-event audit.</li></ul></div></div>
+          <div class="guide-actions"><a class="action primary" href="https://github.com/kyaswanthneeli-stack/agentgate" target="_blank" rel="noopener noreferrer">Read the source code ↗</a><a class="action" href="https://github.com/kyaswanthneeli-stack/agentgate/actions/workflows/ci.yml" target="_blank" rel="noopener noreferrer">View CI &amp; 14 tests ↗</a><a class="action" href="https://github.com/kyaswanthneeli-stack/agentgate/blob/main/docs/ARCHITECTURE_AND_DEMO.md" target="_blank" rel="noopener noreferrer">Architecture notes ↗</a></div>
+        </section>
+        <section class="guide-section" id="limitations">
+          <span class="section-kicker">06 / QUESTIONS THAT MATTER</span><h2>Understand the <em>trade-offs.</em></h2><div class="two-cards"><div class="detail-card"><small>COMMON QUESTION</small><h3>Does it actually send notifications?</h3><p>No. The notification adapter returns a simulation flag and does not send a message.</p></div><div class="detail-card"><small>COMMON QUESTION</small><h3>Can I try the live endpoint without a key?</h3><p>The health endpoint and Swagger documentation are public; protected tool operations correctly reject missing credentials.</p></div><div class="detail-card"><small>COMMON QUESTION</small><h3>Can it stop every prompt injection attack?</h3><p>No. It implements a limited set of checks, not a complete agent security system.</p></div></div>
+          <p class="mini-note">Being clear about limitations is part of engineering: the project shows patterns and testable code, not a promise of production security, measured cost reduction or unconfigured model inference.</p>
+        </section>
+        <section class="guide-section" id="glossary"><span class="section-kicker">07 / KEY WORDS</span><h2>No jargon <em>left behind.</em></h2><div class="glossary"><dl><div><dt>Allowlist</dt><dd>A short list of tool names that the system permits.</dd></div><div><dt>Approval token</dt><dd>A short-lived permission tied to one exact tool request.</dd></div><div><dt>Redaction</dt><dd>Replacing selected sensitive text with safe placeholders.</dd></div><div><dt>Audit metadata</dt><dd>A record of what was allowed without copying raw arguments.</dd></div></dl></div><div class="guide-actions"><a class="action" href="codeatlas-guide.html">Next: CodeAtlas MCP ↗</a><a class="action" href="routewise-guide.html">Next: RouteWise ↗</a></div></section>
+      </div>
+    </div>
+    <footer class="guide-footer"><span>NYK / AI ENGINEERING BLUEPRINTS · Built for clear technical communication</span><a href="../index.html#work">← Back to the portfolio</a></footer>
+  </div></main>
+</body></html>
