@@ -143,6 +143,29 @@
       </div>
       <div class="skills" aria-label="Technical skills"><span>Python</span><span>FastAPI</span><span>Flask</span><span>LLM APIs</span><span>Retrieval-Augmented Generation</span><span>LangGraph</span><span>LangChain</span><span>MCP</span><span>Agent workflows</span><span>SQLite / SQL</span><span>Azure</span><span>BigQuery</span><span>ChromaDB / Milvus</span><span>GitHub Actions</span><span>Docker</span></div>
     </section>
+    <section class="section" id="case-studies">
+      <div class="section-heading">
+        <div><span class="eyebrow">05 / Professional project walkthroughs</span><h2>How I approach applied AI.</h2></div>
+        <p>Architecture-level explanations of professional work. These are experience walkthroughs, not public copies of company repositories.</p>
+      </div>
+      <div class="case-grid">
+        <article class="case-card"><span class="eyebrow">Knowledge systems / RAG</span><h3>Enterprise knowledge assistant</h3><p>Connecting long-form documents to grounded conversational answers through retrieval.</p><div class="case-flow">Documents → Chunking → Embeddings → Retrieval → LLM</div>
+          <details><summary>Explore engineering approach <span aria-hidden="true">＋</span></summary>
+          <p>Document text is prepared and split into retrievable passages. Embeddings and vector search surface relevant content, while a Python/FastAPI backend passes selected context to the response workflow. Important decisions include chunk size, source relevance and selective conversation history.</p>
+          <p><strong>Technologies:</strong> Python, FastAPI, LangGraph, ChromaDB / Milvus, Azure search and LLM APIs.</p>
+          <p class="case-caveat">Professional project overview. No customer documents, source code, accuracy rates or deployment metrics are disclosed.</p></details></article>
+        <article class="case-card"><span class="eyebrow">Agentic workflows / Business data</span><h3>Product and order search</h3><p>Orchestrating multi-step questions that need real business records and tool results.</p><div class="case-flow">Question → Orchestration → BigQuery / Tools → Answer</div>
+          <details><summary>Explore engineering approach <span aria-hidden="true">＋</span></summary>
+          <p>A Python backend accepts a user request, routes it through a task workflow, and retrieves product or order information from business systems. Context is carried between steps so later calls can use earlier findings; logging helps investigate failures and unnecessary tool calls.</p>
+          <p><strong>Technologies:</strong> Python, ADK, LangGraph, BigQuery, MCP and LLM integrations.</p>
+          <p class="case-caveat">Illustrative flow based on project experience. No proprietary business data or unverified performance numbers.</p></details></article>
+        <article class="case-card"><span class="eyebrow">Conversational AI / Voice</span><h3>Voice assistant workflow</h3><p>Connecting speech recognition, conversational reasoning and spoken responses.</p><div class="case-flow">Audio → Transcription → Intent / Tools → Speech</div>
+          <details><summary>Explore engineering approach <span aria-hidden="true">＋</span></summary>
+          <p>Speech-to-text transcribes requests, a Python backend manages conversational context and approved tool integrations, and text-to-speech produces spoken output. The design balances latency, error recovery and clearly defined tool behavior.</p>
+          <p><strong>Technologies:</strong> Python, FastAPI, speech-to-text, text-to-speech, Azure and agent workflows.</p>
+          <p class="case-caveat">Architectural walkthrough, not a published customer application or live speech service.</p></details></article>
+      </div>
+    </section>
     <section class="contact" id="contact">
       <span class="eyebrow">05 / Let's build something useful</span>
       <h2>Looking for a Python + AI engineer?</h2>
