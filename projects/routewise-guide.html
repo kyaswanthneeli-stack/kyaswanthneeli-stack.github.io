@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#080a10">
+  <meta name="description" content="RouteWise explained clearly: everyday analogy, clickable architecture, real example, tools, tests and implementation limits. An AI engineering project by Neeli Yaswanth Kumar.">
+  <title>RouteWise — How it works | Neeli Yaswanth Kumar</title>
+  <link rel="icon" href="../signal-icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../architecture.css?v=1">
+  <script src="../architecture.js?v=1" defer></script>
+</head>
+<body data-project="routewise">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="topbar"><div class="shell"><a class="mark" href="../index.html#work"><span class="mark-symbol">N</span><span>NYK / BLUEPRINTS<small>AI SYSTEMS EXPLAINED</small></span></a><div class="toplinks"><a href="../index.html#work">← All projects</a><a href="routewise.html">Interactive demo</a><a class="top-demo" href="https://github.com/kyaswanthneeli-stack/routewise" target="_blank" rel="noopener noreferrer">Source ↗</a></div></div></header>
+  <main id="main"><div class="shell">
+    <section class="guide-hero"><span class="guide-kicker">SYSTEM BLUEPRINT / 03 · HOSTED FASTAPI / NO-PROVIDER DEMO</span><h1>RouteWise<span>.</span></h1><p class="lead">A traffic director for requests to language models. RouteWise is a hosted FastAPI gateway that chooses a fast or reasoning route using simple rules, optionally calls a configured model provider, and tries an alternate provider for eligible retryable failures.</p><div class="meta"><span class="live">Railway backend · No live provider configured</span><span>FastAPI · HTTPX · Routing · Retry logic</span><span>14 documented tests</span></div></section>
+    <div class="guide-layout">
+      <aside class="guide-sidebar" aria-label="On this page"><span>JUMP TO /</span><a href="#overview">Plain English</a><a href="#flow">Architecture</a><a href="#example">Example</a><a href="#technology">Technology</a><a href="#evidence">Proof</a><a href="#limitations">Limitations</a><a href="#glossary">Glossary</a></aside>
+      <div class="guide-content">
+        <section class="guide-section" id="overview">
+          <span class="section-kicker">01 / START HERE</span><h2>What is it, <em>really?</em></h2>
+          <p>Applications may want predictable routing behavior and a bounded fallback instead of tying every request to one upstream provider. RouteWise demonstrates that gateway logic transparently.</p>
+          <div class="story-card"><span class="small">IN EVERYDAY LANGUAGE</span><p>Imagine a receptionist directing ordinary questions to the quick-service desk and harder questions to the specialist. If the chosen desk is temporarily unavailable, a second desk may be tried. That is the routing pattern—without claiming the rules always pick the best model.</p></div>
+          <div class="two-cards"><div class="detail-card"><small>WHO IT HELPS</small><h3>The practical use case</h3><p>Applications may want predictable routing behavior and a bounded fallback instead of tying every request to one upstream provider. RouteWise demonstrates that gateway logic transparently.</p></div><div class="detail-card"><small>WHAT YOU CAN VERIFY</small><h3>Hosted demo API</h3><p>Public source code, architecture documentation, tests and the labeled browser demo are linked below. The implementation boundaries are documented, not hidden.</p></div></div>
+        </section>
+        <section class="guide-section" id="flow">
+          <span class="section-kicker">02 / INTERACTIVE BLUEPRINT</span><h2>Follow the <em>architecture.</em></h2>
+          <p class="intro">Select any stage below. The explanation shows what enters that part of the system, what it does and what comes out. This diagram explains real code architecture; it is not connected to the running backend.</p>
+          <div class="flow-map" role="group" aria-label="RouteWise architecture steps"><button type="button" class="flow-step is-active" aria-pressed="true" data-title="Authenticate" data-description="A client sends a bounded chat request with a server-issued gateway bearer token. The API validates message roles, lengths, token count and rejects streaming, which this version doesn&#39;t implement." data-input="Authenticated non-streaming chat request" data-output="Validated request or an explicit error"><span class="n">01</span><span class="t">Bearer token</span></button>
+<span class="flow-arrow" aria-hidden="true">→</span><button type="button" class="flow-step" aria-pressed="false" data-title="Choose a route" data-description="The gateway checks user text length and listed complexity keywords. More than 600 characters or words such as analyze, architecture, debug and tradeoff choose reasoning; otherwise fast. An explicit model override takes precedence." data-input="User text plus optional fast/reasoning override" data-output="Chosen route with classifier reasons"><span class="n">02</span><span class="t">Heuristics</span></button>
+<span class="flow-arrow" aria-hidden="true">→</span><button type="button" class="flow-step" aria-pressed="false" data-title="Call provider" data-description="When server-side HTTPS provider configuration exists, the gateway sends the chat request to the selected upstream provider with a per-attempt timeout. The browser never supplies the upstream key." data-input="Selected route and configured server provider" data-output="Provider response or retryable/non-retryable error"><span class="n">03</span><span class="t">Primary attempt</span></button>
+<span class="flow-arrow" aria-hidden="true">→</span><button type="button" class="flow-step" aria-pressed="false" data-title="Fallback" data-description="A retryable 429, 5xx, timeout or network failure may trigger one alternate provider attempt, if configured. Non-retryable client/authentication errors do not silently fail over." data-input="Eligible failure with alternate provider" data-output="Second attempt or final sanitized error"><span class="n">04</span><span class="t">Bounded retry</span></button>
+<span class="flow-arrow" aria-hidden="true">→</span><button type="button" class="flow-step" aria-pressed="false" data-title="Respond &amp; record" data-description="A successful response includes routing metadata, attempted provider names and elapsed request timing. The authenticated /metrics endpoint retains up to 200 successful request summaries without raw prompt text." data-input="Provider or labeled demo fixture response" data-output="Answer, routing explanation and bounded metrics"><span class="n">05</span><span class="t">Routing details</span></button></div>
+          <div class="flow-readout" aria-live="polite" aria-atomic="true">
+            <span class="small">IN FOCUS / <span id="stepCounter">Step 1 of 5</span></span>
+            <h3 id="stepTitle">Authenticate</h3><p id="stepExplanation" class="explanation">A client sends a bounded chat request with a server-issued gateway bearer token. The API validates message roles, lengths, token count and rejects streaming, which this version doesn&#39;t implement.</p>
+            <div class="flow-io"><div><b>WHAT GOES IN</b><span id="stepInput">Authenticated non-streaming chat request</span></div><div><b>WHAT COMES OUT</b><span id="stepOutput">Validated request or an explicit error</span></div></div>
+          </div>
+          <div class="flow-controls"><small>Tip: use ← → arrow keys while a stage is focused.</small><button type="button" id="nextStep">Next step →</button></div>
+          <p class="flow-caption">The visual flow is an educational representation. For the exact code paths, open the source and engineering documentation.</p>
+        </section>
+        <section class="guide-section" id="example">
+          <span class="section-kicker">03 / WALK THROUGH A QUESTION</span><h2>What does it <em>look like?</em></h2>
+          <p>These simplified examples are drawn from the repository's documented behavior. They explain what to expect; they do not execute an API request from this page.</p>
+          <div class="example-layout"><div class="example-box"><span class="small">EXAMPLE INPUT</span><h3>What you provide</h3><pre>POST /v1/chat/completions
+Authorization: Bearer &lt;server-issued gateway key&gt;
+{
+  &quot;model&quot;: &quot;auto&quot;,
+  &quot;messages&quot;: [
+    {&quot;role&quot;: &quot;user&quot;, &quot;content&quot;: &quot;Analyze these architecture tradeoffs&quot;}
+  ]
+}</pre></div><div class="example-box"><span class="small">EXAMPLE OUTCOME</span><h3>What the system determines</h3><pre>Selected route: reasoning
+Reason: keyword &quot;analyze&quot;
+
+Current hosted demo response:
+&quot;Demo response from reasoning; no language model was called.&quot;
+
+With real configured providers, eligible 429, 5xx, network or timeout errors can trigger one alternate attempt.</pre></div></div>
+          <p class="mini-note">This is an explanatory walkthrough of the implementation, not a live API call made by this page. The publicly hosted service is in no-provider mode. Never paste upstream provider keys into a browser.</p>
+          <div class="guide-actions"><a class="action primary" href="routewise.html">Open interactive browser demo ↗</a><a class="action" href="https://routewise-production-c8aefb65.up.railway.app/docs" target="_blank" rel="noopener noreferrer">Open hosted API docs ↗</a></div>
+        </section>
+        <section class="guide-section" id="technology">
+          <span class="section-kicker">04 / WHY THE TECH EXISTS</span><h2>Every component <em>has a job.</em></h2>
+          <p>Instead of a giant list of tools, these are the actual responsibilities each technology has in this project.</p><div class="tech-grid"><div class="tech-item"><strong>FastAPI</strong><p>Hosts chat-shaped and metrics endpoints with request validation.</p></div>
+<div class="tech-item"><strong>HTTPX</strong><p>Makes configured HTTPS upstream requests and handles timeouts.</p></div>
+<div class="tech-item"><strong>Heuristic classifier</strong><p>Uses message length and selected keywords to choose a tier.</p></div>
+<div class="tech-item"><strong>Server environment</strong><p>Holds provider URLs, model identifiers and credentials outside the browser.</p></div></div>
+        </section>
+        <section class="guide-section" id="evidence">
+          <span class="section-kicker">05 / OPEN THE EVIDENCE</span><h2>Show the <em>working parts.</em></h2>
+          <div class="clarity-grid"><div class="clarity-item yes"><h3>✓ Implemented</h3><ul><li>Fast/reasoning selection uses explicit deterministic rules and optional overrides.</li><li>Bearer authentication protects chat and metrics endpoints.</li><li>Configured HTTPS providers can be called with at most two sequential attempts.</li><li>Retry is limited to eligible transient errors.</li><li>Unconfigured mode clearly labels fixture responses as demos.</li></ul></div><div class="clarity-item no"><h3>○ Not claimed</h3><ul><li>No actual LLM is connected to the public Railway deployment.</li><li>The classifier is keyword/length based, not semantic or learned routing.</li><li>No streaming, tool calling, caching or circuit breaker.</li><li>Stored metrics are memory-only, limited to successes and reset on restart.</li><li>No proven quality, latency or cost improvement compared with a baseline.</li></ul></div></div>
+          <div class="guide-actions"><a class="action primary" href="https://github.com/kyaswanthneeli-stack/routewise" target="_blank" rel="noopener noreferrer">Read the source code ↗</a><a class="action" href="https://github.com/kyaswanthneeli-stack/routewise/actions/workflows/ci.yml" target="_blank" rel="noopener noreferrer">View CI &amp; 14 tests ↗</a><a class="action" href="https://github.com/kyaswanthneeli-stack/routewise/blob/main/docs/ARCHITECTURE_AND_DEMO.md" target="_blank" rel="noopener noreferrer">Architecture notes ↗</a></div>
+        </section>
+        <section class="guide-section" id="limitations">
+          <span class="section-kicker">06 / QUESTIONS THAT MATTER</span><h2>Understand the <em>trade-offs.</em></h2><div class="two-cards"><div class="detail-card"><small>COMMON QUESTION</small><h3>Does the public API call GPT or Claude?</h3><p>No. In its current configuration it returns a response explicitly saying no language model was called.</p></div><div class="detail-card"><small>COMMON QUESTION</small><h3>How does it decide between fast and reasoning?</h3><p>It uses deterministic rules: text length, listed keywords or the client&#39;s explicit override.</p></div><div class="detail-card"><small>COMMON QUESTION</small><h3>Will it always retry failures?</h3><p>No. It only retries eligible transient errors and requires a configured alternate provider.</p></div></div>
+          <p class="mini-note">Being clear about limitations is part of engineering: the project shows patterns and testable code, not a promise of production security, measured cost reduction or unconfigured model inference.</p>
+        </section>
+        <section class="guide-section" id="glossary"><span class="section-kicker">07 / KEY WORDS</span><h2>No jargon <em>left behind.</em></h2><div class="glossary"><dl><div><dt>Gateway</dt><dd>A service that receives a request and forwards it according to rules.</dd></div><div><dt>Heuristic</dt><dd>A transparent rule of thumb rather than a trained model.</dd></div><div><dt>Fallback</dt><dd>Trying an alternate provider after certain transient failures.</dd></div><div><dt>Latency</dt><dd>Elapsed time taken to process a request.</dd></div></dl></div><div class="guide-actions"><a class="action" href="codeatlas-guide.html">Next: CodeAtlas MCP ↗</a><a class="action" href="agentgate-guide.html">Next: AgentGate ↗</a></div></section>
+      </div>
+    </div>
+    <footer class="guide-footer"><span>NYK / AI ENGINEERING BLUEPRINTS · Built for clear technical communication</span><a href="../index.html#work">← Back to the portfolio</a></footer>
+  </div></main>
+</body></html>
