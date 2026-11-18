@@ -7,6 +7,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 PAGES = [
     ROOT / "index.html",
+    ROOT / "index-next.html",
     ROOT / "projects" / "codeatlas-mcp.html",
     ROOT / "projects" / "agentgate.html",
     ROOT / "projects" / "routewise.html",
