@@ -3,193 +3,244 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#07111e">
-  <meta name="description" content="Neeli Yaswanth Kumar — Generative AI and Python backend engineer. Explore tested MCP, agent security and LLM routing projects, live APIs, and architecture walkthroughs.">
-  <meta property="og:title" content="Neeli Yaswanth Kumar | AI & Python Engineering">
-  <meta property="og:description" content="Python-first AI systems. Real source, automated tests, live API demonstrations, and clear engineering trade-offs.">
+  <meta name="theme-color" content="#080a10">
+  <meta name="description" content="Neeli Yaswanth Kumar — Generative AI and Python backend engineer. Explore tested MCP developer tools, hosted agent policy and routing APIs, retrieval workbenches, and honest architecture demos.">
+  <meta property="og:title" content="Neeli Yaswanth Kumar — AI Systems Engineer">
+  <meta property="og:description" content="AI ideas. Real systems. Explore tested Python engineering projects, deployed demo APIs and interactive architecture.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://kyaswanthneeli-stack.github.io/">
+  <meta name="color-scheme" content="dark">
   <link rel="canonical" href="https://kyaswanthneeli-stack.github.io/">
-  <link rel="stylesheet" href="portfolio-v2.css?v=1">
-  <link rel="stylesheet" href="portfolio-motion.css?v=1">
-  <title>Neeli Yaswanth Kumar — Generative AI & Python Engineer</title>
+  <link rel="icon" type="image/svg+xml" href="signal-icon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="studio.css?v=4">
+  <script src="studio.js?v=4" defer></script>
+  <title>Neeli Yaswanth Kumar — AI Systems Engineer</title>
 </head>
 <body>
-  <div class="scroll-meter" aria-hidden="true"></div>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <header class="nav-wrap">
-    <nav class="nav container" aria-label="Main navigation">
-      <a class="brand" href="#top" aria-label="Home: Neeli Yaswanth Kumar">
-        <span class="brand-mark" aria-hidden="true">NYK</span>
-        <span class="brand-copy">Neeli Yaswanth Kumar<small>AI & Python Engineer</small></span>
+  <div class="progress-line" aria-hidden="true"></div>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="ambient-grid" aria-hidden="true"></div>
+  <header class="site-header">
+    <div class="site-shell nav-shell">
+      <a href="#top" class="identity" aria-label="Back to top — Neeli Yaswanth Kumar">
+        <span class="identity-symbol" aria-hidden="true"><span>N</span><i></i></span>
+        <span class="identity-copy"><strong>NYK<span class="identity-dot">.</span>studio</strong><small>AI SYSTEMS ENGINEERING</small></span>
       </a>
-      <div class="nav-links">
-        <a href="#projects">Projects</a>
-        <a href="#evidence">Proof of work</a>
-        <a href="#experience">Experience</a>
-        <a class="nav-cta" href="#contact">Let's connect <span aria-hidden="true">↗</span></a>
+      <nav class="top-nav" aria-label="Main navigation">
+        <a href="#work">Work <span class="nav-num">01</span></a>
+        <a href="#proof">Proof <span class="nav-num">02</span></a>
+        <a href="#lab">Lab <span class="nav-num">03</span></a>
+        <a href="#about">About <span class="nav-num">04</span></a>
+      </nav>
+      <div class="header-actions">
+        <button class="palette-switch" id="paletteSwitch" type="button" aria-label="Switch accent color palette" aria-pressed="false" title="Change accent colors">
+          <span class="swatch swatch-a"></span><span class="swatch swatch-b"></span>
+        </button>
+        <button class="search-switch" id="commandOpen" type="button" aria-haspopup="dialog" aria-controls="commandDialog"><span class="search-icon" aria-hidden="true">⌕</span><span class="search-label">Explore</span><kbd>⌘ K</kbd></button>
+        <a class="header-contact" href="#contact">Let's talk <span aria-hidden="true">↗</span></a>
       </div>
-    </nav>
-  </header>
-  <main class="container" id="main">
-    <section class="hero" id="top" aria-labelledby="hero-title">
-      <div>
-        <div class="eyebrow">Python backends · Generative AI · Agentic workflows</div>
-        <h1 id="hero-title">Making AI<br><span>useful,</span> one system at a time.</h1>
-        <p class="lead">I'm Neeli Yaswanth Kumar. I build backend services, retrieval pipelines, and agent workflows that turn complex technology into practical software. Here you can inspect my code, test coverage, architecture, and public demos.</p>
-        <div class="actions">
-          <a class="btn btn-primary" href="#projects">Explore featured work <span aria-hidden="true">↗</span></a>
-          <a class="btn" href="https://github.com/kyaswanthneeli-stack" target="_blank" rel="noopener noreferrer">View GitHub <span aria-hidden="true">↗</span></a>
-        </div>
-        <p class="availability tiny"><span class="dot" aria-hidden="true"></span> Open to international remote AI / Python engineering opportunities · India</p>
-      </div>
-      <div class="hero-visual">
-        <div class="hero-orbit hero-orbit-a" aria-hidden="true"><span class="orbit-dot"></span></div>
-        <div class="hero-orbit hero-orbit-b" aria-hidden="true"><span class="orbit-dot orbit-dot-alt"></span></div>
-        <div class="hero-orbit hero-orbit-c" aria-hidden="true"></div>
-        <div class="float-satellite satellite-one" aria-hidden="true"><span class="sat-icon">{ }</span><span>Python + FastAPI</span></div>
-        <div class="float-satellite satellite-two" aria-hidden="true"><span class="sat-icon">↗</span><span>Agentic AI</span></div>
-        <div class="float-satellite satellite-three" aria-hidden="true"><span class="sat-icon">◇</span><span>MCP + RAG</span></div>
-        <div class="float-satellite satellite-four" aria-hidden="true"><span class="sat-icon">✓</span><span>CI verified</span></div>
-        <div class="console" role="img" aria-label="Illustrative architecture: requests enter the Python service, pass through context and tool orchestration, and return an observable response">
-        <div class="console-bar"><span class="lights" aria-hidden="true"><i></i><i></i><i></i></span><span>systems / architecture</span><span>01—04</span></div>
-        <h3>From request to reliable response</h3>
-        <div class="flow-node"><b>User request</b><small>INPUT</small></div>
-        <div class="connector" aria-hidden="true">↓</div>
-        <div class="flow-node"><b>Python / FastAPI</b><small>VALIDATE</small></div>
-        <div class="connector" aria-hidden="true">↓</div>
-        <div class="flow-node"><b>Retrieval · Tools · Workflow</b><small>CONTEXT</small></div>
-        <div class="connector" aria-hidden="true">↓</div>
-        <div class="flow-node"><b>Response + observability</b><small>OUTPUT</small></div>
-        <div class="console-foot"><span>Conceptual diagram · not a live trace</span><span class="micro-tag">CODE → TEST → DEMO</span></div>
-        </div>
-        <div class="orbit-caption" aria-hidden="true">Move your cursor · explore the system</div>
-      </div>
-    </section>
-    <div class="proofbar" aria-label="Portfolio at a glance">
-      <div class="proof"><strong>03</strong><span>Featured Python projects</span></div>
-      <div class="proof"><strong>02</strong><span>Hosted backend APIs</span></div>
-      <div class="proof"><strong>44</strong><span>Documented Python tests, verified in CI</span></div>
-      <div class="proof"><strong>MCP</strong><span>Code structure, tool controls, LLM routing</span></div>
     </div>
-    <section class="section" id="projects">
-      <div class="section-heading">
-        <div><span class="eyebrow">01 / Selected projects</span><h2>Real code. Thoughtful boundaries.<br>Working demonstrations.</h2></div>
-        <p>Three independently developed portfolio projects, each with source code, tests, a walkthrough, and explicit limitations. Explore them in a browser or inspect the implementation.</p>
+  </header>
+
+  <main id="main">
+    <section class="hero site-shell" id="top" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="pulse"></span><span>NYK / THE ENGINEERING SIDE OF AI</span><span class="version">EDITION 2026</span></p>
+        <h1 id="hero-title">AI ideas.<br><span class="hero-emphasis">Real systems<span class="hero-period">.</span></span></h1>
+        <p class="hero-description">I'm <strong>Neeli Yaswanth Kumar</strong>, a Generative AI and Python backend engineer. I build the layers that connect models, data and tools—with code you can inspect, tests you can run and trade-offs worth discussing.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#work"><span class="button-square" aria-hidden="true">↘</span> Explore my work</a>
+          <a class="button button-ghost" href="https://github.com/kyaswanthneeli-stack" target="_blank" rel="noopener noreferrer">GitHub source <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="hero-availability">
+          <span class="availability-led" aria-hidden="true"></span>
+          <span>Open to remote AI &amp; Python engineering opportunities</span>
+          <span class="availability-separator" aria-hidden="true">/</span>
+          <span>Based in India</span>
+        </div>
       </div>
-      <div class="project-grid">
-        <article class="project-card">
-          <div class="card-top"><span>Developer tooling · Local MCP</span><span class="card-number">01 / 03</span></div>
-          <h3>CodeAtlas MCP</h3>
-          <p>Turn Python code structure into focused context. Index symbols and static call candidates with AST + SQLite, then query a five-tool MCP server.</p>
-          <div class="card-diagram" aria-label="Python source to AST to SQLite to MCP">
-            <span>Python</span><i aria-hidden="true">→</i><span>AST</span><i aria-hidden="true">→</i><span>SQLite</span><i aria-hidden="true">→</i><span>MCP</span>
+
+      <div class="hero-art" id="heroArt">
+        <div class="art-orbital" aria-hidden="true">
+          <div class="orbit-glow"></div>
+          <canvas id="signalCanvas" width="640" height="640" aria-hidden="true"></canvas>
+          <div class="orbit-axis orbit-axis-one"></div>
+          <div class="orbit-axis orbit-axis-two"></div>
+          <div class="orbit-crosshair"><span></span></div>
+          <div class="orbit-core"><span class="orbit-core-label">NYK</span><small>AI / SYSTEMS</small></div>
+        </div>
+        <div class="telemetry telemetry-a" aria-hidden="true"><span class="telemetry-icon mint">⌘</span><div><small>CONTEXT LAYER</small><strong>AST → SQLite → MCP</strong></div><span class="telemetry-end">01</span></div>
+        <div class="telemetry telemetry-b" aria-hidden="true"><span class="telemetry-icon violet">◇</span><div><small>TOOL CONTROL</small><strong>Policy → Approval</strong></div><span class="telemetry-end">02</span></div>
+        <div class="telemetry telemetry-c" aria-hidden="true"><span class="telemetry-icon cyan">↗</span><div><small>MODEL INFRA</small><strong>Route → Fallback</strong></div><span class="telemetry-end">03</span></div>
+        <span class="art-coordinate art-coordinate-one" aria-hidden="true">[ 40° 42′ / SYSTEM ]</span>
+        <span class="art-coordinate art-coordinate-two" aria-hidden="true">CONCEPTUAL NETWORK · POINTER REACTIVE</span>
+      </div>
+      <div class="hero-bottom"><span class="hero-bottom-index">01 / SYSTEMS FIRST</span><a href="#work">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a></div>
+    </section>
+
+    <div class="ticker-rail" aria-label="Core engineering areas">
+      <div class="ticker-track" aria-hidden="true">
+        <span>PYTHON BACKENDS</span><i>✳</i><span>RETRIEVAL ENGINEERING</span><i>✳</i><span>MCP TOOLS</span><i>✳</i><span>AGENTIC WORKFLOWS</span><i>✳</i><span>FASTAPI</span><i>✳</i><span>EVALUATION</span><i>✳</i>
+        <span>PYTHON BACKENDS</span><i>✳</i><span>RETRIEVAL ENGINEERING</span><i>✳</i><span>MCP TOOLS</span><i>✳</i><span>AGENTIC WORKFLOWS</span><i>✳</i><span>FASTAPI</span><i>✳</i><span>EVALUATION</span><i>✳</i>
+      </div>
+    </div>
+
+    <section class="content-section site-shell" id="work" aria-labelledby="work-title">
+      <div class="section-intro reveal">
+        <div><span class="section-tag">01 / FEATURED ENGINEERING</span><h2 id="work-title">Designed to be<br><em>inspected.</em></h2></div>
+        <p>Three independent systems, each built to explore a real backend challenge. Click through to the code, simulation, documentation and test evidence—not just a screenshot.</p>
+      </div>
+
+      <div class="project-list">
+        <article class="system-card system-card-mint reveal" id="codeatlas">
+          <div class="project-copy">
+            <div class="project-overline"><span class="project-number">01 / 03</span><span class="project-category"><span class="status-small"></span> LOCAL DEVELOPER TOOL</span></div>
+            <h3>CodeAtlas<span class="wordmark-dot">.</span><br><span class="project-suffix">MCP</span></h3>
+            <p class="project-bigline">Give coding agents structural context—not an entire file dump.</p>
+            <p class="project-summary">Indexes Python source into an AST/SQLite snapshot and exposes five MCP tools for symbol lookup, static call candidates and potentially impacted tests.</p>
+            <div class="project-pills"><span>Python</span><span>AST</span><span>SQLite</span><span>MCP</span></div>
+            <div class="project-actions">
+              <a class="project-primary" href="projects/codeatlas-mcp.html">Explore graph demo <span aria-hidden="true">↗</span></a>
+              <a href="https://github.com/kyaswanthneeli-stack/codeatlas-mcp" target="_blank" rel="noopener noreferrer">Code + tests <span aria-hidden="true">↗</span></a>
+            </div>
+            <details class="project-scope"><summary>What's implemented, and what's not</summary><p>Locally runnable MCP stdio service; static Python candidate relationships rather than complete type-aware call resolution. The browser visualizer is a sample graph. Token-count comparisons are not end-to-end coding-agent savings.</p></details>
           </div>
-          <div class="card-tags"><span class="chip">Python</span><span class="chip">AST</span><span class="chip">SQLite</span><span class="chip">16 tests</span></div>
-          <div class="card-actions">
-            <a href="projects/codeatlas-mcp.html">Interactive graph <span aria-hidden="true">↗</span></a>
-            <a href="https://github.com/kyaswanthneeli-stack/codeatlas-mcp" target="_blank" rel="noopener noreferrer">Source & tests <span aria-hidden="true">↗</span></a>
+          <div class="project-visual" aria-label="Conceptual diagram: Python source parsed into AST, indexed in SQLite and queried through MCP tools">
+            <div class="visual-sup"><span>ARCHITECTURE / 001</span><span class="visual-led">STRUCTURAL</span></div>
+            <div class="visual-well well-mint"><div class="well-halo"></div><span class="visual-mark">{ }</span><span class="mark-caption">STATIC CODE STRUCTURE</span></div>
+            <div class="flow-track"><span>PYTHON</span><b aria-hidden="true">→</b><span>AST + SQL</span><b aria-hidden="true">→</b><span>MCP</span></div>
+            <div class="visual-foot"><span>05 MCP TOOLS</span><span>16 DOCUMENTED TESTS</span></div>
           </div>
         </article>
-        <article class="project-card">
-          <div class="card-top"><span>Agent governance · Hosted API</span><span class="card-number">02 / 03</span></div>
-          <h3>AgentGate</h3>
-          <p>Inspect tool requests with allowlists, redaction, session limits, and one-use approvals. Live FastAPI documentation; tool execution remains simulated.</p>
-          <div class="card-diagram" aria-label="Agent request to policy check to approved simulated tool">
-            <span>Agent</span><i aria-hidden="true">→</i><span>Policy</span><i aria-hidden="true">→</i><span>Approval</span>
+
+        <article class="system-card system-card-violet reveal" id="agentgate">
+          <div class="project-copy">
+            <div class="project-overline"><span class="project-number">02 / 03</span><span class="project-category"><span class="status-small"></span> HOSTED DEMO API</span></div>
+            <h3>Agent<span class="wordmark-dot">.</span><br><span class="project-suffix">Gate</span></h3>
+            <p class="project-bigline">Put policy between an agent and its tools.</p>
+            <p class="project-summary">A hosted FastAPI prototype for tool allowlists, argument validation, selected sensitive-data redaction, session limits and one-use request-bound approvals.</p>
+            <div class="project-pills"><span>FastAPI</span><span>Policy</span><span>Redaction</span><span>Docker</span></div>
+            <div class="project-actions">
+              <a class="project-primary" href="projects/agentgate.html">Try simulation <span aria-hidden="true">↗</span></a>
+              <a href="https://agentgate-production-00036f18.up.railway.app/docs" target="_blank" rel="noopener noreferrer">Live API docs <span aria-hidden="true">↗</span></a>
+              <a href="https://github.com/kyaswanthneeli-stack/agentgate" target="_blank" rel="noopener noreferrer">Source <span aria-hidden="true">↗</span></a>
+            </div>
+            <details class="project-scope"><summary>What's implemented, and what's not</summary><p>Public FastAPI documentation and protected API endpoints are hosted on Railway. The sample tool adapters return simulated results; no real notifications are sent. This is not a complete prompt-injection firewall or generic MCP proxy.</p></details>
           </div>
-          <div class="card-tags"><span class="chip">FastAPI</span><span class="chip">Access policy</span><span class="chip">14 tests</span><span class="chip">Live API</span></div>
-          <div class="card-actions">
-            <a href="projects/agentgate.html">Try simulation <span aria-hidden="true">↗</span></a>
-            <a href="https://agentgate-production-00036f18.up.railway.app/docs" target="_blank" rel="noopener noreferrer">Live API docs <span aria-hidden="true">↗</span></a>
-            <a href="https://github.com/kyaswanthneeli-stack/agentgate" target="_blank" rel="noopener noreferrer">Code <span aria-hidden="true">↗</span></a>
-          </div>
-        </article>
-        <article class="project-card">
-          <div class="card-top"><span>LLM infrastructure · Hosted API</span><span class="card-number">03 / 03</span></div>
-          <h3>RouteWise</h3>
-          <p>An explainable routing gateway with deterministic fast/reasoning selection, provider failover, and request metrics. Live API is in labeled no-provider demo mode.</p>
-          <div class="card-diagram" aria-label="Incoming request routes to fast or reasoning provider, with failover">
-            <span>Request</span><i aria-hidden="true">→</i><span>Route</span><i aria-hidden="true">↳</i><span>Failover</span>
-          </div>
-          <div class="card-tags"><span class="chip">FastAPI</span><span class="chip">HTTPX</span><span class="chip">14 tests</span><span class="chip">Live API</span></div>
-          <div class="card-actions">
-            <a href="projects/routewise.html">Try routing <span aria-hidden="true">↗</span></a>
-            <a href="https://routewise-production-c8aefb65.up.railway.app/docs" target="_blank" rel="noopener noreferrer">Live API docs <span aria-hidden="true">↗</span></a>
-            <a href="https://github.com/kyaswanthneeli-stack/routewise" target="_blank" rel="noopener noreferrer">Code <span aria-hidden="true">↗</span></a>
+          <div class="project-visual" aria-label="Conceptual diagram: Agent tool request passes through a policy gate, approval check and fixed demonstration adapter">
+            <div class="visual-sup"><span>ARCHITECTURE / 002</span><span class="visual-led">CONTROL</span></div>
+            <div class="visual-well well-violet"><div class="well-halo"></div><span class="visual-mark">◇</span><span class="mark-caption">REQUEST-BOUND APPROVAL</span></div>
+            <div class="flow-track"><span>REQUEST</span><b aria-hidden="true">→</b><span>POLICY</span><b aria-hidden="true">→</b><span>DEMO TOOL</span></div>
+            <div class="visual-foot"><span>RAILWAY API</span><span>14 DOCUMENTED TESTS</span></div>
           </div>
         </article>
+
+        <article class="system-card system-card-cyan reveal" id="routewise">
+          <div class="project-copy">
+            <div class="project-overline"><span class="project-number">03 / 03</span><span class="project-category"><span class="status-small"></span> HOSTED DEMO API</span></div>
+            <h3>Route<span class="wordmark-dot">.</span><br><span class="project-suffix">Wise</span></h3>
+            <p class="project-bigline">Send each request down an explainable path.</p>
+            <p class="project-summary">A hosted FastAPI gateway with deterministic fast/reasoning selection, bounded provider retries, authenticated metrics and labeled no-provider demo responses.</p>
+            <div class="project-pills"><span>FastAPI</span><span>HTTPX</span><span>Routing</span><span>Failover</span></div>
+            <div class="project-actions">
+              <a class="project-primary" href="projects/routewise.html">Try routing demo <span aria-hidden="true">↗</span></a>
+              <a href="https://routewise-production-c8aefb65.up.railway.app/docs" target="_blank" rel="noopener noreferrer">Live API docs <span aria-hidden="true">↗</span></a>
+              <a href="https://github.com/kyaswanthneeli-stack/routewise" target="_blank" rel="noopener noreferrer">Source <span aria-hidden="true">↗</span></a>
+            </div>
+            <details class="project-scope"><summary>What's implemented, and what's not</summary><p>Route selection is based on deterministic heuristics, not trained semantic routing. The public backend returns clearly labeled fixtures until real upstream providers are configured. Browser demo outcomes are simulated.</p></details>
+          </div>
+          <div class="project-visual" aria-label="Conceptual diagram: Incoming chat request is routed to fast or reasoning provider with bounded retry on eligible failures">
+            <div class="visual-sup"><span>ARCHITECTURE / 003</span><span class="visual-led">ROUTING</span></div>
+            <div class="visual-well well-cyan"><div class="well-halo"></div><span class="visual-mark">↗</span><span class="mark-caption">ROUTE + ELIGIBLE FALLBACK</span></div>
+            <div class="flow-track"><span>REQUEST</span><b aria-hidden="true">→</b><span>ROUTE</span><b aria-hidden="true">→</b><span>FALLBACK</span></div>
+            <div class="visual-foot"><span>RAILWAY API</span><span>14 DOCUMENTED TESTS</span></div>
+          </div>
+        </article>
       </div>
     </section>
-    <section class="section" id="evidence">
-      <div class="section-heading">
-        <div><span class="eyebrow">02 / Engineering evidence</span><h2>Inspect the work,<br>not just the pitch.</h2></div>
-        <p>I document what is actually implemented, how it is tested, and where the systems still have limitations.</p>
-      </div>
-      <div class="evidence-grid">
-        <div class="evidence"><div class="icon" aria-hidden="true">✓</div><h3>Automated verification</h3><p>GitHub Actions run Python tests on multiple versions. AgentGate and RouteWise also build Docker images in CI.</p><a href="https://github.com/kyaswanthneeli-stack/agentgate/actions" target="_blank" rel="noopener noreferrer">Explore CI runs ↗</a></div>
-        <div class="evidence"><div class="icon" aria-hidden="true">↗</div><h3>Public API smoke checks</h3><p>Hosted checks verify the Railway health pages, Swagger docs, and unauthorized access responses for the two Python services.</p><a href="https://github.com/kyaswanthneeli-stack/routewise/actions/workflows/deployment-smoke.yml" target="_blank" rel="noopener noreferrer">See deployment checks ↗</a></div>
-        <div class="evidence"><div class="icon" aria-hidden="true">{ }</div><h3>Measured context payloads</h3><p>CodeAtlas counts actual tokenizer payloads on Python source. Smaller graph payloads are not claimed as equal-task agent cost savings.</p><a href="https://github.com/kyaswanthneeli-stack/codeatlas-mcp/blob/main/docs/ARCHITECTURE_AND_BENCHMARK.md" target="_blank" rel="noopener noreferrer">Read methodology ↗</a></div>
-      </div>
-      <p class="note"><strong>Clear scope:</strong> The CodeAtlas visualizer is a fixed graph fixture. AgentGate and RouteWise have publicly hosted Python APIs, but their browser demos are simulations. AgentGate does not send real notifications, and RouteWise is not connected to a paid LLM provider.</p>
-    </section>
-    <section class="section" id="lab">
-      <div class="section-heading">
-        <div><span class="eyebrow">03 / Additional experiments</span><h2>Smaller tools. Clear questions.</h2></div>
-        <p>Explore how retrieval behaves, how outputs regress, and what happens when a multi-step workflow fails.</p>
-      </div>
-      <div class="small-grid">
-        <a class="small-card" href="https://kyaswanthneeli-stack.github.io/sourcedesk/" target="_blank" rel="noopener noreferrer"><span class="eyebrow">Retrieval workbench</span><h3>SourceDesk</h3><p>Search fictional documents, inspect BM25 rankings, and evaluate evidence retrieval.</p><span class="arrow">Open workbench ↗</span></a>
-        <a class="small-card" href="https://kyaswanthneeli-stack.github.io/ai-engineering-lab/evalbench.html" target="_blank" rel="noopener noreferrer"><span class="eyebrow">Evaluation</span><h3>EvalBench</h3><p>Compare saved answers using transparent lexical checks and regression cases.</p><span class="arrow">Open evaluation demo ↗</span></a>
-        <a class="small-card" href="https://kyaswanthneeli-stack.github.io/ai-engineering-lab/traceflow.html" target="_blank" rel="noopener noreferrer"><span class="eyebrow">Workflow observability</span><h3>TraceFlow</h3><p>Explore synthetic retries, call budgets, cancellation, and missing evidence.</p><span class="arrow">Open trace explorer ↗</span></a>
+
+    <section class="proof-section" id="proof" aria-labelledby="proof-title">
+      <div class="site-shell">
+        <div class="proof-heading reveal">
+          <span class="section-tag">02 / ENGINEERING EVIDENCE</span>
+          <h2 id="proof-title">Not just a <em>nice interface.</em></h2>
+          <p>I prefer showing what actually works, what was measured and what still needs work.</p>
+        </div>
+        <div class="proof-grid">
+          <a class="proof-tile reveal" href="https://github.com/kyaswanthneeli-stack?tab=repositories" target="_blank" rel="noopener noreferrer"><span class="proof-tile-top">01 / SOURCE</span><strong>03</strong><span class="proof-title">Featured Python systems</span><span class="proof-description">CodeAtlas MCP, AgentGate and RouteWise: source code, setup instructions and explicit limitations.</span><span class="proof-link">Inspect repositories ↗</span></a>
+          <a class="proof-tile reveal" href="https://github.com/kyaswanthneeli-stack/agentgate/actions/workflows/deployment-smoke.yml" target="_blank" rel="noopener noreferrer"><span class="proof-tile-top">02 / HOSTING</span><strong>02</strong><span class="proof-title">Public demo APIs</span><span class="proof-description">AgentGate and RouteWise offer public health/docs endpoints with authentication checks.</span><span class="proof-link">Review API checks ↗</span></a>
+          <a class="proof-tile reveal" href="https://github.com/kyaswanthneeli-stack/codeatlas-mcp/actions/workflows/ci.yml" target="_blank" rel="noopener noreferrer"><span class="proof-tile-top">03 / VERIFICATION</span><strong>44</strong><span class="proof-title">Documented Python tests</span><span class="proof-description">16 for CodeAtlas, 14 for AgentGate and 14 for RouteWise, exercised in CI.</span><span class="proof-link">Explore test evidence ↗</span></a>
+          <a class="proof-tile proof-tile-note reveal" href="https://github.com/kyaswanthneeli-stack/codeatlas-mcp/blob/main/docs/ARCHITECTURE_AND_BENCHMARK.md" target="_blank" rel="noopener noreferrer"><span class="proof-tile-top">04 / MEASUREMENT</span><strong class="proof-symbol">↗</strong><span class="proof-title">Honest benchmarks</span><span class="proof-description">CodeAtlas measures tokenizer payloads, without claiming proven coding-agent cost reduction.</span><span class="proof-link">Read the methodology ↗</span></a>
+        </div>
+        <p class="proof-footnote">These are engineering portfolio demonstrations. The browser explorers use sample data, while the authenticated Railway backends expose real service endpoints. Their limitations are documented in each repository.</p>
       </div>
     </section>
-    <section class="section" id="experience">
-      <div class="section-heading">
-        <div><span class="eyebrow">04 / Professional background</span><h2>A backend foundation.<br>An AI engineering focus.</h2></div>
-        <p>Experience highlights from my existing professional portfolio. Private company code and customer data are not included in these public repositories.</p>
-      </div>
-      <div class="experience">
-        <article class="exp"><small>Jan 2023 — Present</small><h3>Senior Software Engineer</h3><strong>Intenso Tech Solution Private Limited</strong><p>Python APIs and enterprise retrieval, LLM integrations, agent workflows, and conversational backend applications.</p></article>
-        <article class="exp"><small>May 2020 — Dec 2022</small><h3>Software Engineer</h3><strong>Luna Software Solutions Pvt Ltd</strong><p>Software engineering foundation, developing application delivery and backend development skills.</p></article>
-      </div>
-      <div class="skills" aria-label="Technical skills"><span>Python</span><span>FastAPI</span><span>Flask</span><span>LLM APIs</span><span>Retrieval-Augmented Generation</span><span>LangGraph</span><span>LangChain</span><span>MCP</span><span>Agent workflows</span><span>SQLite / SQL</span><span>Azure</span><span>BigQuery</span><span>ChromaDB / Milvus</span><span>GitHub Actions</span><span>Docker</span></div>
-    </section>
-    <section class="section" id="case-studies">
-      <div class="section-heading">
-        <div><span class="eyebrow">05 / Professional project walkthroughs</span><h2>How I approach applied AI.</h2></div>
-        <p>Architecture-level explanations of professional work. These are experience walkthroughs, not public copies of company repositories.</p>
-      </div>
-      <div class="case-grid">
-        <article class="case-card"><span class="eyebrow">Knowledge systems / RAG</span><h3>Enterprise knowledge assistant</h3><p>Connecting long-form documents to grounded conversational answers through retrieval.</p><div class="case-flow">Documents → Chunking → Embeddings → Retrieval → LLM</div>
-          <details><summary>Explore engineering approach <span aria-hidden="true">＋</span></summary>
-          <p>Document text is prepared and split into retrievable passages. Embeddings and vector search surface relevant content, while a Python/FastAPI backend passes selected context to the response workflow. Important decisions include chunk size, source relevance and selective conversation history.</p>
-          <p><strong>Technologies:</strong> Python, FastAPI, LangGraph, ChromaDB / Milvus, Azure search and LLM APIs.</p>
-          <p class="case-caveat">Professional project overview. No customer documents, source code, accuracy rates or deployment metrics are disclosed.</p></details></article>
-        <article class="case-card"><span class="eyebrow">Agentic workflows / Business data</span><h3>Product and order search</h3><p>Orchestrating multi-step questions that need real business records and tool results.</p><div class="case-flow">Question → Orchestration → BigQuery / Tools → Answer</div>
-          <details><summary>Explore engineering approach <span aria-hidden="true">＋</span></summary>
-          <p>A Python backend accepts a user request, routes it through a task workflow, and retrieves product or order information from business systems. Context is carried between steps so later calls can use earlier findings; logging helps investigate failures and unnecessary tool calls.</p>
-          <p><strong>Technologies:</strong> Python, ADK, LangGraph, BigQuery, MCP and LLM integrations.</p>
-          <p class="case-caveat">Illustrative flow based on project experience. No proprietary business data or unverified performance numbers.</p></details></article>
-        <article class="case-card"><span class="eyebrow">Conversational AI / Voice</span><h3>Voice assistant workflow</h3><p>Connecting speech recognition, conversational reasoning and spoken responses.</p><div class="case-flow">Audio → Transcription → Intent / Tools → Speech</div>
-          <details><summary>Explore engineering approach <span aria-hidden="true">＋</span></summary>
-          <p>Speech-to-text transcribes requests, a Python backend manages conversational context and approved tool integrations, and text-to-speech produces spoken output. The design balances latency, error recovery and clearly defined tool behavior.</p>
-          <p><strong>Technologies:</strong> Python, FastAPI, speech-to-text, text-to-speech, Azure and agent workflows.</p>
-          <p class="case-caveat">Architectural walkthrough, not a published customer application or live speech service.</p></details></article>
+
+    <section class="content-section site-shell" id="lab" aria-labelledby="lab-title">
+      <div class="section-intro reveal"><div><span class="section-tag">03 / THE EXPERIMENTAL LAB</span><h2 id="lab-title">Small experiments.<br><em>Big questions.</em></h2></div><p>Search relevance, answer evaluation and agent observability—three interactive explorations of how AI systems behave.</p></div>
+      <div class="lab-grid">
+        <a class="lab-card reveal" href="https://kyaswanthneeli-stack.github.io/sourcedesk/" target="_blank" rel="noopener noreferrer"><span class="lab-index">LAB / 001</span><div class="lab-glyph lab-glyph-search" aria-hidden="true">⌕</div><h3>SourceDesk</h3><p>BM25 retrieval, source inspection and local document exploration.</p><span class="lab-open">Open retrieval workbench <span aria-hidden="true">↗</span></span></a>
+        <a class="lab-card reveal" href="https://kyaswanthneeli-stack.github.io/ai-engineering-lab/evalbench.html" target="_blank" rel="noopener noreferrer"><span class="lab-index">LAB / 002</span><div class="lab-glyph lab-glyph-eval" aria-hidden="true">≋</div><h3>EvalBench</h3><p>Saved-answer lexical checks, regression cases and transparent evaluation.</p><span class="lab-open">Open evaluation demo <span aria-hidden="true">↗</span></span></a>
+        <a class="lab-card reveal" href="https://kyaswanthneeli-stack.github.io/ai-engineering-lab/traceflow.html" target="_blank" rel="noopener noreferrer"><span class="lab-index">LAB / 003</span><div class="lab-glyph lab-glyph-trace" aria-hidden="true">⌘</div><h3>TraceFlow</h3><p>Simulated workflow retries, cancellation and tool-call budgets.</p><span class="lab-open">Open trace explorer <span aria-hidden="true">↗</span></span></a>
       </div>
     </section>
-    <section class="contact" id="contact">
-      <span class="eyebrow">06 / Let's build something useful</span>
-      <h2>Looking for a Python + AI engineer?</h2>
-      <p>I'm interested in Generative AI, agentic systems, LLM applications, and Python backend roles with teams that value clear thinking and shipped software. My source, design notes, and live API documentation are available above.</p>
-      <div class="actions">
-        <a class="btn btn-primary" href="mailto:kyaswanthneeli@gmail.com?subject=AI%20Engineering%20Opportunity">Email me <span aria-hidden="true">↗</span></a>
-        <a class="btn" href="https://www.linkedin.com/in/yaswanthneeli-kumar-134a74414/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
-        <a class="btn" href="https://github.com/kyaswanthneeli-stack" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+
+    <section class="about-section" id="about" aria-labelledby="about-title">
+      <div class="site-shell about-grid">
+        <div class="about-identity reveal">
+          <span class="section-tag">04 / THE HUMAN BEHIND THE CODE</span>
+          <h2 id="about-title">A builder's<br><em>mindset.</em></h2>
+          <p>I like the part of engineering that happens after the initial prompt: grounding answers in evidence, connecting tools safely, measuring behavior and improving how systems are maintained.</p>
+          <div class="skill-cloud" aria-label="Technical skills"><span>Python</span><span>FastAPI</span><span>REST APIs</span><span>RAG</span><span>LangGraph</span><span>MCP</span><span>SQL</span><span>Azure</span><span>Docker</span><span>GitHub Actions</span></div>
+        </div>
+        <div class="career-panel reveal">
+          <div class="career-heading"><span>CAREER / EXPERIENCE</span><span class="career-asterisk" aria-hidden="true">✳</span></div>
+          <div class="career-item"><span class="career-time">2023 — PRESENT</span><div><h3>Senior Software Engineer</h3><p>Intenso Tech Solution Private Limited</p><small>Python APIs, retrieval systems, LLM integration and agent workflows</small></div></div>
+          <div class="career-item"><span class="career-time">2020 — 2022</span><div><h3>Software Engineer</h3><p>Luna Software Solutions Pvt Ltd</p><small>Software engineering and backend application delivery</small></div></div>
+          <p class="career-caption">Experience details follow the existing portfolio. Private employer code and client data are not part of these public demonstrations.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section site-shell" id="case-studies" aria-labelledby="case-title">
+      <div class="section-intro reveal"><div><span class="section-tag">05 / PROFESSIONAL SYSTEMS</span><h2 id="case-title">Applied AI.<br><em>Beyond the lab.</em></h2></div><p>Architecture-level walkthroughs of professional work. These are explanatory case studies, not copies of private client systems.</p></div>
+      <div class="case-list">
+        <a class="case-row reveal" href="enterprise-knowledge-assistant.html"><span>01 / KNOWLEDGE</span><strong>Enterprise knowledge assistant</strong><small>Ingestion → Retrieval → Grounded response</small><b aria-hidden="true">↗</b></a>
+        <a class="case-row reveal" href="agentic-search.html"><span>02 / AGENTIC WORK</span><strong>Product &amp; order search</strong><small>Question → Orchestration → Business data</small><b aria-hidden="true">↗</b></a>
+        <a class="case-row reveal" href="voice-assistant.html"><span>03 / CONVERSATION</span><strong>Voice assistant workflows</strong><small>Speech → Intent → Response → Speech</small><b aria-hidden="true">↗</b></a>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact" aria-labelledby="contact-title">
+      <div class="site-shell contact-content">
+        <span class="section-tag">06 / NEXT SYSTEM</span>
+        <h2 id="contact-title">Have a hard<br>AI problem<span>?</span></h2>
+        <div class="contact-bottom"><p>I'm interested in Generative AI, agentic systems, Python backend and international remote engineering roles. Let's talk about what needs to be built—and how to build it well.</p><a class="contact-link" href="mailto:kyaswanthneeli@gmail.com?subject=AI%20Engineering%20Opportunity"><span>Email me</span><strong aria-hidden="true">↗</strong></a></div>
+        <div class="contact-secondary"><a href="https://www.linkedin.com/in/yaswanthneeli-kumar-134a74414/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="https://github.com/kyaswanthneeli-stack" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="#top">Back to top ↑</a></div>
       </div>
     </section>
   </main>
-  <footer class="footer container"><span>© 2026 Neeli Yaswanth Kumar · Built with HTML, CSS, and practical engineering.</span><span><a href="#top">Back to top ↑</a> · <a href="https://github.com/kyaswanthneeli-stack/kyaswanthneeli-stack.github.io" target="_blank" rel="noopener noreferrer">View website source ↗</a></span></footer>
-  <script src="portfolio-motion.js?v=1" defer></script>
+
+  <footer class="site-footer"><div class="site-shell footer-content"><span>© 2026 NEELI YASWANTH KUMAR</span><span>DESIGNED + CODED FOR THE WEB</span><a href="https://github.com/kyaswanthneeli-stack/kyaswanthneeli-stack.github.io" target="_blank" rel="noopener noreferrer">VIEW SITE SOURCE ↗</a></div></footer>
+
+  <dialog class="command-dialog" id="commandDialog" aria-labelledby="commandTitle">
+    <div class="command-top"><span class="command-symbol" aria-hidden="true">⌘</span><h2 id="commandTitle">Quick navigation</h2><button class="command-close" type="button" id="commandClose" aria-label="Close quick navigation">ESC</button></div>
+    <label class="visually-hidden" for="commandSearch">Search destinations</label>
+    <input id="commandSearch" class="command-search" type="search" placeholder="Search projects, pages or actions…" autocomplete="off">
+    <div class="command-results" id="commandResults">
+      <button type="button" data-go="#work"><span>01</span><strong>Featured systems</strong><small>Jump to portfolio work</small></button>
+      <button type="button" data-go="projects/codeatlas-mcp.html"><span>⌘</span><strong>CodeAtlas MCP</strong><small>Explore architecture demo</small></button>
+      <button type="button" data-go="projects/agentgate.html"><span>◇</span><strong>AgentGate</strong><small>Tool policy demonstration</small></button>
+      <button type="button" data-go="projects/routewise.html"><span>↗</span><strong>RouteWise</strong><small>LLM routing demonstration</small></button>
+      <button type="button" data-go="#proof"><span>02</span><strong>Engineering proof</strong><small>Tests and hosted APIs</small></button>
+      <button type="button" data-go="#lab"><span>03</span><strong>Experimentation lab</strong><small>SourceDesk, EvalBench, TraceFlow</small></button>
+      <button type="button" data-go="#about"><span>04</span><strong>About &amp; experience</strong><small>Career and technical focus</small></button>
+      <button type="button" data-go="#contact"><span>✉</span><strong>Contact</strong><small>Discuss an opportunity</small></button>
+    </div>
+    <p class="command-hint">↵ Open selected destination &nbsp; / &nbsp; ESC Close</p>
+  </dialog>
 </body>
 </html>
