@@ -91,19 +91,24 @@
     <section class="content-section site-shell" id="work" aria-labelledby="work-title">
       <div class="section-intro reveal">
         <div><span class="section-tag">01 / FEATURED ENGINEERING</span><h2 id="work-title">Designed to be<br><em>inspected.</em></h2></div>
-        <p>Three independent systems, each built to explore a real backend challenge. Click through to the code, simulation, documentation and test evidence—not just a screenshot.</p>
+        <p>Three independent systems, each solving a different problem. Start with a plain-English story, explore the clickable architecture, then inspect real implementation and test evidence.</p>
       </div>
 
+      <div class="journey-guide reveal" aria-label="How to explore an engineering project">
+        <div><span class="journey-num">01</span><strong>Understand the problem</strong><small>Everyday explanation</small></div><span class="journey-link" aria-hidden="true">→</span>
+        <div><span class="journey-num">02</span><strong>Follow the architecture</strong><small>Clickable inputs and outputs</small></div><span class="journey-link" aria-hidden="true">→</span>
+        <div><span class="journey-num">03</span><strong>Inspect the evidence</strong><small>Code, tests and limits</small></div>
+      </div>
       <div class="project-list">
         <article class="system-card system-card-mint reveal" id="codeatlas">
           <div class="project-copy">
             <div class="project-overline"><span class="project-number">01 / 03</span><span class="project-category"><span class="status-small"></span> LOCAL DEVELOPER TOOL</span></div>
             <h3>CodeAtlas<span class="wordmark-dot">.</span><br><span class="project-suffix">MCP</span></h3>
             <p class="project-bigline">Give coding agents structural context—not an entire file dump.</p>
-            <p class="project-summary">Indexes Python source into an AST/SQLite snapshot and exposes five MCP tools for symbol lookup, static call candidates and potentially impacted tests.</p>
+            <p class="project-summary">Indexes Python source into an AST/SQLite snapshot and exposes five MCP tools for symbol lookup, static call candidates and potentially impacted tests.</p><p class="project-plain"><b>In simple words:</b> A map of Python code that helps a coding assistant find functions and their possible connections.</p><div class="project-route"><span>Read Python</span><i aria-hidden="true">→</i><span>Build a map</span><i aria-hidden="true">→</i><span>Answer MCP queries</span></div>
             <div class="project-pills"><span>Python</span><span>AST</span><span>SQLite</span><span>MCP</span></div>
             <div class="project-actions">
-              <a class="project-primary" href="projects/codeatlas-mcp.html">Explore graph demo <span aria-hidden="true">↗</span></a>
+              <a class="project-primary" href="projects/codeatlas-guide.html">How it works <span aria-hidden="true">↗</span></a><a href="projects/codeatlas-mcp.html">Try graph demo ↗</a>
               <a href="https://github.com/kyaswanthneeli-stack/codeatlas-mcp" target="_blank" rel="noopener noreferrer">Code + tests <span aria-hidden="true">↗</span></a>
             </div>
             <details class="project-scope"><summary>What's implemented, and what's not</summary><p>Locally runnable MCP stdio service; static Python candidate relationships rather than complete type-aware call resolution. The browser visualizer is a sample graph. Token-count comparisons are not end-to-end coding-agent savings.</p></details>
@@ -111,7 +116,7 @@
           <div class="project-visual" aria-label="Conceptual diagram: Python source parsed into AST, indexed in SQLite and queried through MCP tools">
             <div class="visual-sup"><span>ARCHITECTURE / 001</span><span class="visual-led">STRUCTURAL</span></div>
             <div class="visual-well well-mint"><div class="well-halo"></div><span class="visual-mark">{ }</span><span class="mark-caption">STATIC CODE STRUCTURE</span></div>
-            <div class="flow-track"><span>PYTHON</span><b aria-hidden="true">→</b><span>AST + SQL</span><b aria-hidden="true">→</b><span>MCP</span></div>
+            <div class="flow-track"><span>PYTHON</span><b aria-hidden="true">→</b><span>AST + SQL</span><b aria-hidden="true">→</b><span>MCP</span></div><a class="architecture-launch" href="projects/codeatlas-guide.html">Explore each architecture step <b aria-hidden="true">↗</b></a>
             <div class="visual-foot"><span>05 MCP TOOLS</span><span>16 DOCUMENTED TESTS</span></div>
           </div>
         </article>
@@ -121,10 +126,10 @@
             <div class="project-overline"><span class="project-number">02 / 03</span><span class="project-category"><span class="status-small"></span> HOSTED DEMO API</span></div>
             <h3>Agent<span class="wordmark-dot">.</span><br><span class="project-suffix">Gate</span></h3>
             <p class="project-bigline">Put policy between an agent and its tools.</p>
-            <p class="project-summary">A hosted FastAPI prototype for tool allowlists, argument validation, selected sensitive-data redaction, session limits and one-use request-bound approvals.</p>
+            <p class="project-summary">A hosted FastAPI prototype for tool allowlists, argument validation, selected sensitive-data redaction, session limits and one-use request-bound approvals.</p><p class="project-plain"><b>In simple words:</b> A security checkpoint that decides whether an agent's tool request is permitted before a simulated tool runs.</p><div class="project-route"><span>Request</span><i aria-hidden="true">→</i><span>Policy checks</span><i aria-hidden="true">→</i><span>Demo result</span></div>
             <div class="project-pills"><span>FastAPI</span><span>Policy</span><span>Redaction</span><span>Docker</span></div>
             <div class="project-actions">
-              <a class="project-primary" href="projects/agentgate.html">Try simulation <span aria-hidden="true">↗</span></a>
+              <a class="project-primary" href="projects/agentgate-guide.html">How it works <span aria-hidden="true">↗</span></a><a href="projects/agentgate.html">Try simulation ↗</a>
               <a href="https://agentgate-production-00036f18.up.railway.app/docs" target="_blank" rel="noopener noreferrer">Live API docs <span aria-hidden="true">↗</span></a>
               <a href="https://github.com/kyaswanthneeli-stack/agentgate" target="_blank" rel="noopener noreferrer">Source <span aria-hidden="true">↗</span></a>
             </div>
@@ -133,7 +138,7 @@
           <div class="project-visual" aria-label="Conceptual diagram: Agent tool request passes through a policy gate, approval check and fixed demonstration adapter">
             <div class="visual-sup"><span>ARCHITECTURE / 002</span><span class="visual-led">CONTROL</span></div>
             <div class="visual-well well-violet"><div class="well-halo"></div><span class="visual-mark">◇</span><span class="mark-caption">REQUEST-BOUND APPROVAL</span></div>
-            <div class="flow-track"><span>REQUEST</span><b aria-hidden="true">→</b><span>POLICY</span><b aria-hidden="true">→</b><span>DEMO TOOL</span></div>
+            <div class="flow-track"><span>REQUEST</span><b aria-hidden="true">→</b><span>POLICY</span><b aria-hidden="true">→</b><span>DEMO TOOL</span></div><a class="architecture-launch" href="projects/agentgate-guide.html">Explore each architecture step <b aria-hidden="true">↗</b></a>
             <div class="visual-foot"><span>RAILWAY API</span><span>14 DOCUMENTED TESTS</span></div>
           </div>
         </article>
@@ -143,10 +148,10 @@
             <div class="project-overline"><span class="project-number">03 / 03</span><span class="project-category"><span class="status-small"></span> HOSTED DEMO API</span></div>
             <h3>Route<span class="wordmark-dot">.</span><br><span class="project-suffix">Wise</span></h3>
             <p class="project-bigline">Send each request down an explainable path.</p>
-            <p class="project-summary">A hosted FastAPI gateway with deterministic fast/reasoning selection, bounded provider retries, authenticated metrics and labeled no-provider demo responses.</p>
+            <p class="project-summary">A hosted FastAPI gateway with deterministic fast/reasoning selection, bounded provider retries, authenticated metrics and labeled no-provider demo responses.</p><p class="project-plain"><b>In simple words:</b> A traffic director that chooses a fast or reasoning route and may try a backup for certain errors.</p><div class="project-route"><span>Incoming prompt</span><i aria-hidden="true">→</i><span>Choose route</span><i aria-hidden="true">→</i><span>Possible fallback</span></div>
             <div class="project-pills"><span>FastAPI</span><span>HTTPX</span><span>Routing</span><span>Failover</span></div>
             <div class="project-actions">
-              <a class="project-primary" href="projects/routewise.html">Try routing demo <span aria-hidden="true">↗</span></a>
+              <a class="project-primary" href="projects/routewise-guide.html">How it works <span aria-hidden="true">↗</span></a><a href="projects/routewise.html">Try routing demo ↗</a>
               <a href="https://routewise-production-c8aefb65.up.railway.app/docs" target="_blank" rel="noopener noreferrer">Live API docs <span aria-hidden="true">↗</span></a>
               <a href="https://github.com/kyaswanthneeli-stack/routewise" target="_blank" rel="noopener noreferrer">Source <span aria-hidden="true">↗</span></a>
             </div>
@@ -155,7 +160,7 @@
           <div class="project-visual" aria-label="Conceptual diagram: Incoming chat request is routed to fast or reasoning provider with bounded retry on eligible failures">
             <div class="visual-sup"><span>ARCHITECTURE / 003</span><span class="visual-led">ROUTING</span></div>
             <div class="visual-well well-cyan"><div class="well-halo"></div><span class="visual-mark">↗</span><span class="mark-caption">ROUTE + ELIGIBLE FALLBACK</span></div>
-            <div class="flow-track"><span>REQUEST</span><b aria-hidden="true">→</b><span>ROUTE</span><b aria-hidden="true">→</b><span>FALLBACK</span></div>
+            <div class="flow-track"><span>REQUEST</span><b aria-hidden="true">→</b><span>ROUTE</span><b aria-hidden="true">→</b><span>FALLBACK</span></div><a class="architecture-launch" href="projects/routewise-guide.html">Explore each architecture step <b aria-hidden="true">↗</b></a>
             <div class="visual-foot"><span>RAILWAY API</span><span>14 DOCUMENTED TESTS</span></div>
           </div>
         </article>
@@ -180,11 +185,11 @@
     </section>
 
     <section class="content-section site-shell" id="lab" aria-labelledby="lab-title">
-      <div class="section-intro reveal"><div><span class="section-tag">03 / THE EXPERIMENTAL LAB</span><h2 id="lab-title">Small experiments.<br><em>Big questions.</em></h2></div><p>Search relevance, answer evaluation and agent observability—three interactive explorations of how AI systems behave.</p></div>
+      <div class="section-intro reveal"><div><span class="section-tag">03 / THE EXPERIMENTAL LAB</span><h2 id="lab-title">Small experiments.<br><em>Big questions.</em></h2></div><p>Source retrieval, answer evaluation and workflow tracing. Each lab has an explainer showing its input, processing steps, output and limits—plus a working browser demo.</p></div>
       <div class="lab-grid">
-        <a class="lab-card reveal" href="https://kyaswanthneeli-stack.github.io/sourcedesk/" target="_blank" rel="noopener noreferrer"><span class="lab-index">LAB / 001</span><div class="lab-glyph lab-glyph-search" aria-hidden="true">⌕</div><h3>SourceDesk</h3><p>BM25 retrieval, source inspection and local document exploration.</p><span class="lab-open">Open retrieval workbench <span aria-hidden="true">↗</span></span></a>
-        <a class="lab-card reveal" href="https://kyaswanthneeli-stack.github.io/ai-engineering-lab/evalbench.html" target="_blank" rel="noopener noreferrer"><span class="lab-index">LAB / 002</span><div class="lab-glyph lab-glyph-eval" aria-hidden="true">≋</div><h3>EvalBench</h3><p>Saved-answer lexical checks, regression cases and transparent evaluation.</p><span class="lab-open">Open evaluation demo <span aria-hidden="true">↗</span></span></a>
-        <a class="lab-card reveal" href="https://kyaswanthneeli-stack.github.io/ai-engineering-lab/traceflow.html" target="_blank" rel="noopener noreferrer"><span class="lab-index">LAB / 003</span><div class="lab-glyph lab-glyph-trace" aria-hidden="true">⌘</div><h3>TraceFlow</h3><p>Simulated workflow retries, cancellation and tool-call budgets.</p><span class="lab-open">Open trace explorer <span aria-hidden="true">↗</span></span></a>
+        <article class="lab-card reveal"><span class="lab-index">LAB / 001</span><div class="lab-glyph lab-glyph-search" aria-hidden="true">⌕</div><h3>SourceDesk</h3><p>BM25 retrieval, source inspection and local document exploration.</p><div class="lab-actions"><a class="lab-open" href="projects/lab-guide.html#sourcedesk">How it works ↗</a><a class="lab-demo" href="https://kyaswanthneeli-stack.github.io/sourcedesk/" target="_blank" rel="noopener noreferrer">Try the demo ↗</a></div></article>
+        <article class="lab-card reveal"><span class="lab-index">LAB / 002</span><div class="lab-glyph lab-glyph-eval" aria-hidden="true">≋</div><h3>EvalBench</h3><p>Saved-answer lexical checks, regression cases and transparent evaluation.</p><div class="lab-actions"><a class="lab-open" href="projects/lab-guide.html#evalbench">How it works ↗</a><a class="lab-demo" href="https://kyaswanthneeli-stack.github.io/ai-engineering-lab/evalbench.html" target="_blank" rel="noopener noreferrer">Try the demo ↗</a></div></article>
+        <article class="lab-card reveal"><span class="lab-index">LAB / 003</span><div class="lab-glyph lab-glyph-trace" aria-hidden="true">⌘</div><h3>TraceFlow</h3><p>Simulated workflow retries, cancellation and tool-call budgets.</p><div class="lab-actions"><a class="lab-open" href="projects/lab-guide.html#traceflow">How it works ↗</a><a class="lab-demo" href="https://kyaswanthneeli-stack.github.io/ai-engineering-lab/traceflow.html" target="_blank" rel="noopener noreferrer">Try the demo ↗</a></div></article>
       </div>
     </section>
 
@@ -232,9 +237,9 @@
     <input id="commandSearch" class="command-search" type="search" placeholder="Search projects, pages or actions…" autocomplete="off">
     <div class="command-results" id="commandResults">
       <button type="button" data-go="#work"><span>01</span><strong>Featured systems</strong><small>Jump to portfolio work</small></button>
-      <button type="button" data-go="projects/codeatlas-mcp.html"><span>⌘</span><strong>CodeAtlas MCP</strong><small>Explore architecture demo</small></button>
-      <button type="button" data-go="projects/agentgate.html"><span>◇</span><strong>AgentGate</strong><small>Tool policy demonstration</small></button>
-      <button type="button" data-go="projects/routewise.html"><span>↗</span><strong>RouteWise</strong><small>LLM routing demonstration</small></button>
+      <button type="button" data-go="projects/codeatlas-guide.html"><span>⌘</span><strong>CodeAtlas MCP</strong><small>Step-by-step architecture blueprint</small></button>
+      <button type="button" data-go="projects/agentgate-guide.html"><span>◇</span><strong>AgentGate</strong><small>Policy and approval architecture</small></button>
+      <button type="button" data-go="projects/routewise-guide.html"><span>↗</span><strong>RouteWise</strong><small>Routing and fallback architecture</small></button>
       <button type="button" data-go="#proof"><span>02</span><strong>Engineering proof</strong><small>Tests and hosted APIs</small></button>
       <button type="button" data-go="#lab"><span>03</span><strong>Experimentation lab</strong><small>SourceDesk, EvalBench, TraceFlow</small></button>
       <button type="button" data-go="#about"><span>04</span><strong>About &amp; experience</strong><small>Career and technical focus</small></button>
