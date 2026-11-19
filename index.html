@@ -212,9 +212,11 @@
     </section>
 
     <section class="content-section site-shell" id="repopilot" aria-labelledby="repopilot-title">
-      <div class="section-intro reveal"><div><span class="section-tag">FLAGSHIP BUILD / PUBLIC CI</span><h2 id="repopilot-title">RepoPilot.<br><em>Fixes need evidence.</em></h2></div><p>An issue-to-patch Python harness built around structured LLM proposals, Docker verification and explicit human approval. The reference-patch workflow is proven in CI; real-model resolution and PR publication are not yet claimed.</p></div>
+      <div class="section-intro reveal"><div><span class="section-tag">FLAGSHIP BUILD / PUBLIC CI</span><h2 id="repopilot-title">RepoPilot.<br><em>Fixes need evidence.</em></h2></div><p>An issue-to-patch Python harness built around structured LLM proposals, Docker verification and explicit human approval. A real Qwen2.5-coder:3b model generated a fix and regression test for one explicitly seeded public GitHub issue. Docker verified baseline pass → reproduction fail → patched tests pass. Draft PR #2 is open with passing CI and remains unmerged; no benchmark success rate is claimed.</p></div>
       <div class="case-list">
         <a class="case-row reveal" href="https://kyaswanthneeli-stack.github.io/ai-engineering-lab/repopilot/"><span>RECRUITER GUIDE</span><strong>RepoPilot — issue-to-patch harness</strong><small>GitHub issue → Code context → Proposed patch → Docker evidence</small><b aria-hidden="true">↗</b></a>
+        <a class="case-row reveal" href="https://kyaswanthneeli-stack.github.io/ai-engineering-lab/repopilot/model-run.html"><span>REAL OLLAMA RUN</span><strong>AI-generated patch · Docker verified</strong><small>35.0-second measured run · Qwen 3B · one seeded issue</small><b aria-hidden="true">↗</b></a>
+        <a class="case-row reveal" href="https://github.com/kyaswanthneeli-stack/ai-engineering-lab/pull/2"><span>DRAFT PR</span><strong>Inspect model-authored fix and test</strong><small>Open for human review · CI passed · not merged</small><b aria-hidden="true">↗</b></a>
         <a class="case-row reveal" href="https://github.com/kyaswanthneeli-stack/ai-engineering-lab/actions/workflows/repopilot.yml"><span>VERIFICATION</span><strong>Real fail-before / pass-after test</strong><small>See passing GitHub Actions job and downloadable fixture dashboard</small><b aria-hidden="true">↗</b></a>
       </div>
     </section>
